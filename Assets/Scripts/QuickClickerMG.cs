@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuickClickerMG : MonoBehaviour
 {
-    //Pop up of white and red sheep in random loc
+    //FIN: Pop up of white and red sheep in random loc
     //add all red sheep to list
     //Click on all the red sheep 
     //Remove red sheep from list
@@ -20,17 +20,26 @@ public class QuickClickerMG : MonoBehaviour
     public int totalCount = 10;
     private int currentCount = 0;
     public float spawnInterval = 0.05f;
+    [SerializeField] private List<GameObject> redSheepList = new List<GameObject>();
 
 
-    
     private void Start()
     {
-        //sheepSpawner();
+        //sheepSpawner(); 
         StartCoroutine(SpawnProg());
+    }
+    private void Update()
+    {
+        if (redSheepList.Count == 0)
+        {
+            //win mini game 
+            Debug.Log("Win");
+        }
     }
     private IEnumerator SpawnProg()
     {
         Debug.Log("working");
+        //Debug.Log(redSheepList);
         while(currentCount < totalCount)
         {
             sheepSpawner();
@@ -56,7 +65,7 @@ public class QuickClickerMG : MonoBehaviour
             Vector3 randomLocalPos = new Vector3(randomX, randomY, 0f);
 
             GameObject newSheep = Instantiate(whiteSheep, spawnArea);
-
+            //redSheepList.Add(newSheep);
             RectTransform rect = newSheep.GetComponent<RectTransform>();
             if (rect != null)
             {
@@ -72,7 +81,7 @@ public class QuickClickerMG : MonoBehaviour
             Vector3 randomLocalPos = new Vector3(randomX, randomY, 0f);
 
             GameObject newSheep = Instantiate(redSheep, spawnArea);
-
+            redSheepList.Add(newSheep);
             RectTransform rect = newSheep.GetComponent<RectTransform>();
             if (rect != null)
             {
@@ -83,4 +92,13 @@ public class QuickClickerMG : MonoBehaviour
 
     }
 
+    private void OnMouseDown()
+    {
+        Debug.Log("clicking");
+        if(gameObject.CompareTag("Red"))
+        {
+            Destroy(gameObject);
+            redSheepList.Remove(gameObject);
+        }
+    }
 }
