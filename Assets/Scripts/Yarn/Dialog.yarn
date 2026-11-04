@@ -1,0 +1,48 @@
+﻿title: loadPhase
+---
+a
+===
+title: Grace_Victim_S1
+---
+Grace : *crying*
+You : Whats Wrong?
+Grace : I just got my beautiful butterfly clip stolen by Viviana
+You : Whos Viviana? Let me beat him up
+Grace : Shes the kid with the paper boat hat
+Grace : Can you help me get that butterfly clip? 
+    > Yes
+    > Of Course Not 
+===
+title: Viviana_Bully_S1
+---
+Viviana : Whats up with you?? 
+Viviana : Dork lookin ahh
+You : ?? and  you steal butterfly clips for a living?
+Viviana : wh-wha? how do you know that
+You : you mind giving it back
+Viviana : fight me
+<<start_minigame SheepGame>>
+
+===
+title: Andy_Victim_S2
+---
+a
+===
+title: Diana_Bully_S2
+---
+a
+===
+
+title: Daisy_Victim_S3
+---
+a
+===
+title: Kevin_Bully_S3
+---
+a
+===
+
+title: James_Bully_King_Final
+---
+a
+===
