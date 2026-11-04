@@ -32,7 +32,7 @@ public class QuickClickerMG : MonoBehaviour
 
     public Slider timerBar;
 
-    private void Start()
+    private void Awake()
     {
         //sheepSpawner(); 
         currentTime = gameTime;
@@ -137,6 +137,7 @@ public class QuickClickerMG : MonoBehaviour
         gameEnded = true;
         gameActive = false;
         Debug.Log("won");
+        //this.gameObject.SetActive(false);
     }
 
     private void LoseSheepGame()
@@ -144,6 +145,7 @@ public class QuickClickerMG : MonoBehaviour
         gameEnded = true;
         gameActive=false;
         Debug.Log("lost");
+        //this.gameObject.SetActive(false);
     }
 }
 
