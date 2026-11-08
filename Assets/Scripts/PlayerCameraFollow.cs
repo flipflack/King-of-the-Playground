@@ -9,12 +9,20 @@ public class PlayerCameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private Vector3 cameraOffset = new Vector3(0,0,-10f);
 
-    private void Update()
+    private float fixedY;
+
+    private void Start()
+    {
+        fixedY = transform.position.y;
+    }
+
+    private void LateUpdate()
     {
         if (target)
         {
-        Vector3 targetDest = target.position + followOffset + cameraOffset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetDest, ref velocity, dampTime);
+            Vector3 targetDest = target.position + followOffset + cameraOffset;
+            targetDest.y = fixedY;
+            transform.position = Vector3.SmoothDamp(transform.position, targetDest, ref velocity, dampTime);
         }
 
     }
