@@ -1,17 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class NPC : MonoBehaviour, IInteractable
 {
+    //references
+    public DialogueRunner dialog;
+    public NPC_Data npcData; // attach to canvas or manager
+
+
     [SerializeField] private string sceneToLoad;
     public void Interact()
     {
-        Debug.Log("wallahi shittings good morning");
+        Debug.Log($"interacted with {npcData.npcName}"); //specifies NPC to make ur life easier
 
-        if (!string.IsNullOrEmpty(sceneToLoad))
+        if (npcData != null && !string.IsNullOrEmpty(sceneToLoad))
         {
             // 2. Loads the new scene
-            SceneManager.LoadScene(sceneToLoad);
+            GameManager.Instance.BeginConversation(npcData,sceneToLoad);
             Debug.Log("entered new scene");
         }
         else
