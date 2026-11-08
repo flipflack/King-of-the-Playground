@@ -7,6 +7,14 @@ using UnityEngine.UI;
 
 public class PatternRecognition : MonoBehaviour
 {
+    //Count down 3,2,1 appears in text b4 game starts
+    //NOTE: feels a little slow when in "realtime"
+    // quick pop up of what to do "Count!"
+    //NOTE: needs to be changable per minigame
+    //one sentence description of what to do ("Click the buttons from 1-10")
+    //NOTE: needs to be changable per minigame 
+
+    //this and all the other minigames stuff will eventually move into gameManager or a minigamesManager
     public List<Button> buttons;
     public List<Button> shuffledButtons;
     int counter = 0;
@@ -18,14 +26,29 @@ public class PatternRecognition : MonoBehaviour
     public bool gameActive = false;
     public bool gameEnded = false;
 
+    public TextMeshProUGUI instructionsText;
+    public TextMeshProUGUI countdownText;
+    public GameObject countingMinigameCanvas;
+
     public void Start()
     {
-        currentTime = gameTime;
-        if (timerBar != null)
+        //Debug.Log("running");
+        StartCoroutine(StartCountdown());
+    }
+    IEnumerator StartCountdown()
+    {
+        Debug.Log("runningCountdown");
+        int count = 3;
+        while(count > 0)
         {
-            timerBar.maxValue = gameTime;
-            timerBar.value = gameTime;
+            countdownText.text = count.ToString();
+            yield return new WaitForSeconds(1f);
+            count--;
         }
+        countdownText.text = "Count!";
+        yield return new WaitForSeconds(1f);
+        countdownText.gameObject.SetActive(false);
+        countingMinigameCanvas.SetActive(true); 
         RestartTheGame();
     }
     private void Update()
@@ -44,6 +67,14 @@ public class PatternRecognition : MonoBehaviour
     }
     public void RestartTheGame()
     {
+        instructionsText.text = ("Click the buttons from 1 - 10");
+        currentTime = gameTime;
+        if (timerBar != null)
+        {
+            timerBar.maxValue = gameTime;
+            timerBar.value = gameTime;
+        }
+
         counter = 0;
         currentTime = gameTime;
         gameEnded = false;
