@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,9 +32,31 @@ public class QuickClickerMG : MonoBehaviour
     private List<GameObject> redSheepList = new List<GameObject>();
 
     public Slider timerBar;
-
+    public TextMeshProUGUI instructionsText;
+    public TextMeshProUGUI countdownText;
     private void Awake()
     {
+        StartCoroutine(StartCountdown());
+    }
+    IEnumerator StartCountdown()
+    {
+        Debug.Log("runningCountdown");
+        int count = 3;
+        while (count > 0)
+        {
+            countdownText.text = count.ToString();
+            yield return new WaitForSeconds(1f);
+            count--;
+        }
+        countdownText.text = "Red!";
+        yield return new WaitForSeconds(1f);
+        countdownText.gameObject.SetActive(false);
+
+        StartSheepGame();
+    }
+    private void StartSheepGame()
+    {
+        
         //sheepSpawner(); 
         currentTime = gameTime;
         if (timerBar != null)
@@ -42,6 +65,7 @@ public class QuickClickerMG : MonoBehaviour
             timerBar.value = gameTime;
         }
         StartCoroutine(SpawnProg());
+
     }
     private void Update()
     {
@@ -59,6 +83,7 @@ public class QuickClickerMG : MonoBehaviour
     }
     private IEnumerator SpawnProg()
     {
+        instructionsText.text = ("Click all of the red sheep!");
         //Debug.Log("working");
         //Debug.Log(redSheepList);
         while (currentCount < wspawnCount + rspawnCount)
