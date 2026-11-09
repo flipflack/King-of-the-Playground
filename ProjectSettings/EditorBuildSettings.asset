@@ -13,6 +13,8 @@ EditorBuildSettings:
     guid: 6901ebf3fa72dbe4d8b254aa857cee3c
   - enabled: 0
     path: Assets/Scenes/MinigameTesting.unity
+  - enabled: 1
+    path: Assets/Scenes/PatternMG.unity
     guid: 44a774c4dd1d0134d8775966408fc619
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
