@@ -20,14 +20,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-        {
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-
-        canvasGroup.alpha = 1f;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
 
         originalPosition = rectTransform.position;
     }
@@ -45,6 +37,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup.blocksRaycasts = false;
         dragStartPosition = rectTransform.position;
         successfullyDropped = false;
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -57,13 +50,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         Debug.Log("OnEndDrag");
         canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
-        canvasGroup.alpha = 1f;
         //return to previos pos if not placed in a slot (ehhh not so sure abt this)
-        if (!successfullyDropped)
-        {
-            rectTransform.position = dragStartPosition;
-        }
+        //if(!successfullyDropped)
+        //{
+        //    rectTransform.position = dragStartPosition;
+        //}
     }
 
     public void OnPointerDown(PointerEventData eventData)

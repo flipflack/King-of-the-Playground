@@ -64,28 +64,57 @@ public class WordScramble : MonoBehaviour
     }
     public void CheckAnswer()
     {
-        //so it doesnt check untill every slot has answer
-        foreach(ItemSlot slot in answerSlots)
+        ////so it doesnt check untill every slot has answer
+        //foreach(ItemSlot slot in answerSlots)
+        //{
+        //    if (slot.occupiedCard == null)
+        //        return;
+        //}
+
+        ////create the players answer into a word
+        //string playerAnswer = "";
+        //Debug.Log(playerAnswer);
+        //foreach(ItemSlot slot in answerSlots)
+        //{
+        //    playerAnswer += slot.occupiedCard.letter;
+        //}
+
+        ////check player answer
+        //if(playerAnswer == correctWord)
+        //{
+        //    Debug.Log("won");
+        //}
+        //else
+        //{
+        //    Debug.Log("lost");
+        //}
+        // Don't check until every slot has a letter
+        foreach (ItemSlot slot in answerSlots)
         {
             if (slot.occupiedCard == null)
                 return;
         }
 
-        //create the players answer into a word
+        // Build the player's answer
         string playerAnswer = "";
-        foreach(ItemSlot slot in answerSlots)
+
+        foreach (ItemSlot slot in answerSlots)
         {
             playerAnswer += slot.occupiedCard.letter;
         }
 
-        //check player answer
-        if(playerAnswer == correctWord)
+        Debug.Log("Player Answer: " + playerAnswer);
+
+        // Check the answer
+        if (playerAnswer == correctWord)
         {
-            Debug.Log("won");
+            Debug.Log("YOU WIN!");
+            // Add win dialogue or next minigame here
         }
         else
         {
-            Debug.Log("lost");
+            Debug.Log("Incorrect! Try again.");
+            // Player can rearrange the letters
         }
     }
 }
