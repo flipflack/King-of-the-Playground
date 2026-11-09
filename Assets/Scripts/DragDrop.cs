@@ -37,7 +37,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup.blocksRaycasts = false;
         dragStartPosition = rectTransform.position;
         successfullyDropped = false;
+
+        if(currentSlot !=null)
+        {
+            currentSlot.ClearSlot();
+            currentSlot = null;
+        }
         transform.SetAsLastSibling();
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -69,11 +76,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void PlaceInSlot(ItemSlot slot)
     {
-        //remove card from previous slot 
-        if(currentSlot != null)
-        {
-            currentSlot.ClearSlot();
-        }
+        if (slot.occupiedCard != null)
+            return;
+
         currentSlot = slot;
         slot.occupiedCard = this;
         rectTransform.position = slot.transform.position;

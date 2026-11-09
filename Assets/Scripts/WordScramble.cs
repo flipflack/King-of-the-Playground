@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class WordScramble : MonoBehaviour
 {
@@ -15,12 +18,73 @@ public class WordScramble : MonoBehaviour
 
     public string correctWord;
 
+    public float gameTime = 5f;
+    private float currentTime;
+    public Slider timerBar;
+
+    public bool gameActive = false;
+    public bool gameEnded = false;
+
+    public TextMeshProUGUI instructionsText;
+    public TextMeshProUGUI countdownText;
+    public GameObject wordMinigameCanvas;
+
     public void Start()
     {
+        StartCoroutine(StartCountdown());
+        //StartGame();
+    }
+    IEnumerator StartCountdown()
+    {
+        Debug.Log("runningCountdown");
+        int count = 3;
+        while (count > 0)
+        {
+            countdownText.text = count.ToString();
+            yield return new WaitForSeconds(1f);
+            count--;
+        }
+        countdownText.text = "Spell!";
+        yield return new WaitForSeconds(1f);
+        countdownText.gameObject.SetActive(false);
+        wordMinigameCanvas.SetActive(true);
         StartGame();
+    }
+    private void Update()
+    {
+        if (!gameActive || gameEnded)
+            return;
+        currentTime -= Time.deltaTime;
+        if (timerBar != null)
+        {
+            timerBar.value = currentTime;
+        }
+        if (currentTime <= 0)
+        {
+            LoseWordGame();
+        }
     }
     public void StartGame()
     {
+        //eventually change this so it isn't hardcoded
+        instructionsText.text = ("Unscrambled the letters to spell a word!");
+        currentTime = gameTime;
+        if (timerBar != null)
+        {
+            timerBar.maxValue = gameTime;
+            timerBar.value = gameTime;
+        }
+
+        currentTime = gameTime;
+        gameEnded = false;
+        gameActive = true;
+
+        if (timerBar != null)
+        {
+            timerBar.maxValue = gameTime;
+            timerBar.value = gameTime;
+        }
+
         //pick random word
         correctWord = potentialWords[Random.Range(0, potentialWords.Count)].ToUpper();
         Debug.Log(correctWord);
@@ -48,7 +112,6 @@ public class WordScramble : MonoBehaviour
             letterCards[i].currentSlot = null;
             letterCards[i].LetterSetter(scrambledLetters[i]);
             CanvasGroup group = letterCards[i].GetComponent<CanvasGroup>();
-            group.alpha = 1f;
             group.interactable = true;
             group.blocksRaycasts = true;
             letterCards[i].gameObject.SetActive(true);
@@ -64,57 +127,60 @@ public class WordScramble : MonoBehaviour
     }
     public void CheckAnswer()
     {
-        ////so it doesnt check untill every slot has answer
-        //foreach(ItemSlot slot in answerSlots)
-        //{
-        //    if (slot.occupiedCard == null)
-        //        return;
-        //}
-
-        ////create the players answer into a word
-        //string playerAnswer = "";
-        //Debug.Log(playerAnswer);
-        //foreach(ItemSlot slot in answerSlots)
-        //{
-        //    playerAnswer += slot.occupiedCard.letter;
-        //}
-
-        ////check player answer
-        //if(playerAnswer == correctWord)
-        //{
-        //    Debug.Log("won");
-        //}
-        //else
-        //{
-        //    Debug.Log("lost");
-        //}
-        // Don't check until every slot has a letter
+        if (gameEnded || !gameActive)
+            return;
+        //so it doesnt check untill every slot has answer
         foreach (ItemSlot slot in answerSlots)
         {
             if (slot.occupiedCard == null)
                 return;
         }
 
-        // Build the player's answer
+        //create the players answer into a word
         string playerAnswer = "";
-
         foreach (ItemSlot slot in answerSlots)
         {
             playerAnswer += slot.occupiedCard.letter;
         }
+        Debug.Log(playerAnswer);
 
-        Debug.Log("Player Answer: " + playerAnswer);
-
-        // Check the answer
+        //check player answer
         if (playerAnswer == correctWord)
         {
-            Debug.Log("YOU WIN!");
-            // Add win dialogue or next minigame here
+            EndWordGame(true);
         }
         else
         {
-            Debug.Log("Incorrect! Try again.");
-            // Player can rearrange the letters
+            Debug.Log("not try again");
         }
+        
+    }
+    public void EndWordGame(bool won)
+    {
+        if(gameEnded) return;
+        gameEnded = true;
+        gameActive = false;
+        foreach(DragDrop card in letterCards)
+        {
+            CanvasGroup group = card.GetComponent<CanvasGroup>();
+            group.interactable = false;
+            group.blocksRaycasts = false;
+        }
+        if(won)
+        {
+            Debug.Log("won");
+            instructionsText.text = "You got the word!";
+        }
+        else
+        {
+            Debug.Log("lose");
+            instructionsText.text = "You can't spell dummy.";
+        }
+    }
+    private void LoseWordGame()
+    {
+        if (gameEnded || !gameActive)
+            return;
+       EndWordGame(false);
     }
 }
