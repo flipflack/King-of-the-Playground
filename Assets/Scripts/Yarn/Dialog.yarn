@@ -1,43 +1,89 @@
 ﻿title: loadPhase
 ---
-a
+<<declare $minigame_won = false>>
 ===
-title: Grace_Victim_S1
----
-Grace : *crying*
-You : Whats Wrong?
-Grace : I just got my beautiful butterfly clip stolen by Viviana
-You : Whos Viviana? Let me beat him up
-Grace : Shes the kid with the paper boat hat
-Grace : Can you help me get that butterfly clip? 
-    > Yes
-    > Of Course Not 
-===
-title: Viviana_Bully_S1
+title: Viviana_Bully_Start
 ---
 Viviana : Whats up with you?? 
 Viviana : Dork lookin ahh
-You : ?? and  you steal butterfly clips for a living?
-Viviana : wh-wha? how do you know that
+You : ??
+Viviana : What? 
+You : Whats up with that pimple
+Viviana : wh-wha? What pimple?
+Viviana : oh.. you're lying
+Viviana : what was that for anyway? 
 You : you mind giving it back
-Viviana : fight me
-<<start_minigame SheepGame>>
+Viviana : giving back what? I don't even know you
+Viviana : who the hell are you anyway
+You : You know.. the marbles you keep telling Grace you don't have
+    -> By the way, I'm Lola, the GOAT of this town
+        Viviana : Lola? 
+        Viviana : The goat? why are you a goat? what does that even mean..
+        Viviana : Anyways..
+    -> I'm Lola.. anyways what do you know about James??
+        Viviana : James is the king here 
+        Viviana : We are very good friends, he doesn't know that though
+        Viviana : Anyways..
+Viviana : What do you know??
+Viviana : Speaking of marbles, if Grace wants you to be her little lapdog so bad and have you get it for her instead of herself
+Viviana : How about playing this little game with me?
+<<start_minigame MinigameManager "SheepGame">>
+<<if $minigame_won>>
+    Viviana : ...fine. You win. Here are the marbles
+    <<set_phase "end">>
+<<else>>
+    Viviana : Ha! Come back when you're better
+<<endif>>
+===
+title: Viviana_Bully_End
+---
+Viviana : What are you still doing here? You got your marbles.
+===
+title: Grace_Victim_Start
+---
+Grace : *crying*
+You : Whats Wrong?
+Grace : Its Viviana..
+You : Whos Viviana? 
+Grace : Shes the kid with the paper boat hat
+Grace : I keep pestering her to give me my marbles back
+You : Is she not giving you marbles back? Does she not have her own..
+Grace : Heres the thing, she keeps stubbornly saying that the marbles I gave her disappeared
+Grace : And that, theres nothing she could do because its gone
+Grace : But I keep seeing her holding the colored marbles that I gave her
+You : You're sure they're yours?
+Grace : Yes, they're the super limited ultra special unique KidBusters marbles  
+Grace : Theres no way she would have the same marbles that I have
+Grace : She even hides them when I come near, but I know she has my marbles
+Grace : Can you try pestering her for me?
+You : Alright.. I'll get them back for you
+===
+title: Grace_Victim_End
+---
+Grace : wait is that..
+You : Yup thats it! I got your marbles back
+Grace : WOAHH, oh my gosh
+Grace : Are you the best? Can we be friends? How did you manage to do that??
+You : Ah.. its nothing hehe
+You : Lets be friends, lets take down this James guy
+Grace : Ah that guy?? 
+Grace : You're trying to take him down?
+Grace : Alright, if its with you I'll join your side, lets beat up this James guy!!
+===
+title: Andy_Victim
+---
+a
+===
+title: Diana_Bully
+---
+a
+===
 
-===
-title: Andy_Victim_S2
+title: Daisy_Victim
 ---
 a
 ===
-title: Diana_Bully_S2
----
-a
-===
-
-title: Daisy_Victim_S3
----
-a
-===
-title: Kevin_Bully_S3
+title: Kevin_Bully
 ---
 a
 ===

@@ -11,7 +11,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private DialogueRunner dialogueRunner;
 
     [YarnCommand("start_minigame")]
-    public IEnumerator StartMinigameCommand()
+    public IEnumerator StartMinigameCommand(string gameName)
     {
         //checks if UI and Mnigame exist, or is referenced 
         if (myMinigameUI == null || myMinigame == null)

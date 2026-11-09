@@ -137,6 +137,7 @@ public class QuickClickerMG : MonoBehaviour
         gameEnded = true;
         gameActive = false;
         Debug.Log("won");
+        GetComponent<Minigame>().Complete(true);
         //this.gameObject.SetActive(false);
     }
 
@@ -145,6 +146,7 @@ public class QuickClickerMG : MonoBehaviour
         gameEnded = true;
         gameActive=false;
         Debug.Log("lost");
+        GetComponent<Minigame>().Complete(false);
         //this.gameObject.SetActive(false);
     }
 }

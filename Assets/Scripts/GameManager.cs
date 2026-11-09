@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public NPC_Data CurrentNPC { get; private set; }
     public string ReturnScene { get; private set; }
+    private InMemoryVariableStorage variableStorage;
 
     private void Awake()
     {
@@ -22,7 +23,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        variableStorage = GetComponent<InMemoryVariableStorage>();
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void BeginConversation(NPC_Data npc, string sceneToLoad)
@@ -40,6 +48,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (Instance != this) return;   // ignore events meant for an old/duplicate GameManager
         if (CurrentNPC == null) return;   // not in a conversation (e.g. returning to the overworld)
 
         DialogueRunner runner = FindAnyObjectByType<DialogueRunner>();
@@ -47,6 +56,15 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("GameManager: no DialogueRunner found in scene '" + scene.name + "'.");
             return;
+        }
+
+        runner.VariableStorage = variableStorage;   // usepersistent storage 
+
+        NPC npcInScene = FindAnyObjectByType<NPC>();
+        if (npcInScene != null && CurrentNPC.npcSprite != null)
+        {
+            SpriteRenderer sr = npcInScene.GetComponent<SpriteRenderer>(); // getting the NPC sprite
+            if (sr != null) sr.sprite = CurrentNPC.npcSprite;
         }
 
         StartCoroutine(StartDialogueRoutine(runner));

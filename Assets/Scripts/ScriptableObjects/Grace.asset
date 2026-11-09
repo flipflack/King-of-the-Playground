@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Grace
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Data
   npcName: Grace
-  startingNode: 
-  npcSprite: {fileID: 0}
+  startingNode: Grace_Victim_Start
+  endingNode: Grace_Victim_End
+  npcSprite: {fileID: -3028437699459830311, guid: dea604d3502d9c04cab2d5c49390eaee, type: 3}
   currentPhase: 0
