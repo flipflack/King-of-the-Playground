@@ -23,7 +23,8 @@ public class Interactor : MonoBehaviour
     }
     void Update()
     {
-        if(Keyboard.current.eKey.IsActuated() && currentInteractable != null)
+
+        if(Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && currentInteractable != null)
         {
             currentInteractable.Interact();
         }

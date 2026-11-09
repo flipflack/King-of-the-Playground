@@ -4,12 +4,14 @@ using Yarn.Unity;
 
 public class MinigameManager : MonoBehaviour
 {
+    // handles MINIGAME UI and YSS
+
     [SerializeField] private GameObject myMinigameUI;
     [SerializeField] private Minigame myMinigame;
     [SerializeField] private DialogueRunner dialogueRunner;
 
     [YarnCommand("start_minigame")]
-    public IEnumerator StartMinigameCommand(string gameName)
+    public IEnumerator StartMinigameCommand()
     {
         //checks if UI and Mnigame exist, or is referenced 
         if (myMinigameUI == null || myMinigame == null)
@@ -18,6 +20,7 @@ public class MinigameManager : MonoBehaviour
             yield break;
         }
 
+        myMinigame.ResetState();
         myMinigameUI.SetActive(true);
 
         while (!myMinigame.IsFinished)
@@ -25,11 +28,9 @@ public class MinigameManager : MonoBehaviour
             yield return null;
         }
 
-        VariableStorageBehaviour variableStorage = FindAnyObjectByType<VariableStorageBehaviour>();
-
-        if (variableStorage != null)
+        if (dialogueRunner != null && dialogueRunner.VariableStorage != null)
         {
-            variableStorage.SetValue("$minigame_won", myMinigame.DidPlayerWin);
+            dialogueRunner.VariableStorage.SetValue("$minigame_won", myMinigame.DidPlayerWin);
         }
 
         myMinigameUI.SetActive(false);

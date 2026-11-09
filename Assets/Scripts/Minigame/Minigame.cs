@@ -10,4 +10,11 @@ public class Minigame : MonoBehaviour
         DidPlayerWin = playerWon;
         IsFinished = true;
     }
+
+    // Called by MinigameManager before each play so the minigame can be replayed
+    public void ResetState()
+    {
+        IsFinished = false;
+        DidPlayerWin = false;
+    }
 }
