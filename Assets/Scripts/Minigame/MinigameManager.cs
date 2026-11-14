@@ -25,33 +25,117 @@ public class MinigameManager : MonoBehaviour
     private float currentTime;
     private bool isRunning = false;
 
+    private void Awake()
+    {
+        //hide all minigame UI when the scene switches
+        minigameBGCanvas.SetActive(false);
 
-    [SerializeField] private GameObject myMinigameUI;
-    [SerializeField] private Minigame myMinigame;
+        foreach (MinigameSettings settings in minigames)
+        {
+            settings.minigameCanvas.SetActive(false);
+        }
+        countdownText.gameObject.SetActive(false);
+    }
 
     [YarnCommand("start_minigame")]
     public IEnumerator StartMinigameCommand(string gameName)
     {
-        //checks if UI and Mnigame exist, or is referenced 
-        if (myMinigameUI == null || myMinigame == null)
+        //converting ys string to enum
+        if(!System.Enum.TryParse(gameName, true, out MinigameType selectedType))
         {
-            Debug.LogError("MinigameManager is missing its UI or Minigame reference.");
+            Debug.Log("Not a minigame type:" + gameName);
+            yield break;
+        }
+        
+        //finds matching minigame settings
+        bool found = false; 
+        
+        foreach (MinigameSettings settings in minigames)
+        {
+            if(settings.type == selectedType)
+            {
+                currentSettings = settings;
+                found = true;
+                break;
+            }
+        }
+
+        //if this be broke
+        if(!found)
+        {
+            Debug.Log("no settings found fix yo shit for: " + gameName);
+            yield break;
+        }
+        if(currentSettings.minigameCanvas == null || currentSettings.minigame == null)
+        {
+            Debug.Log("missing references for: " + gameName);
             yield break;
         }
 
-        myMinigame.ResetState();
-        myMinigameUI.SetActive(true);
+        isRunning = true;
+        //turning on everything for the selected mg
+        currentMinigame = currentSettings.minigame;
+        minigameBGCanvas.SetActive(true);
+        instructionsText.text = currentSettings.instructions;
+        currentSettings.minigameCanvas.SetActive(true);
+        currentTime = currentSettings.gameTime;
 
-        while (!myMinigame.IsFinished)
+        if(timerBar != null)
         {
+            timerBar.maxValue = currentTime;
+            timerBar.value = currentTime;
+        }
+
+        //start the game 
+        yield return StartCoroutine(StartCountdown());
+
+        currentMinigame.ResetState();
+
+        while(!currentMinigame.IsFinished && currentTime >0)
+        {
+            currentTime -= Time.deltaTime;
+            timerBar.value = Mathf.Max(0, currentTime);
+
             yield return null;
         }
 
-        if (dialogueRunner != null && dialogueRunner.VariableStorage != null)
+        //if time runs out lose
+        if(!currentMinigame.IsFinished)
         {
-            dialogueRunner.VariableStorage.SetValue("$minigame_won", myMinigame.DidPlayerWin);
+            currentMinigame.Complete(false);
         }
 
-        myMinigameUI.SetActive(false);
+        //tell ys the results
+        if (dialogueRunner != null && dialogueRunner.VariableStorage != null)
+        {
+            dialogueRunner.VariableStorage.SetValue("$minigame_won", currentMinigame.DidPlayerWin);
+        }
+        Debug.Log(currentMinigame.DidPlayerWin ? "won minigame" : "lost minigame");
+
+        yield return new WaitForSeconds(1f);
+
+        //turn everything off after mg done
+        currentSettings.minigameCanvas.SetActive(false);
+        minigameBGCanvas.SetActive(false);
+        countdownText.gameObject.SetActive(false);
+        isRunning = false;
+    }
+
+    private IEnumerator StartCountdown()
+    {
+        countdownText.gameObject.SetActive(true);
+        int count = 3;
+
+        while(count > 0)
+        {
+            countdownText.text = count.ToString();
+            yield return new WaitForSeconds(1f);
+            count--;
+        }
+
+        countdownText.text = currentSettings.countdownPrompt;
+        yield return new WaitForSeconds(1f);
+
+        countdownText.gameObject.SetActive(false);
     }
 }
