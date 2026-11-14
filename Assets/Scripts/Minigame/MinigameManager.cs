@@ -1,14 +1,33 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using Yarn.Unity;
 
 public class MinigameManager : MonoBehaviour
 {
-    // handles MINIGAME UI and YSS
+    //handles MINIGAME UI and YSS
+
+    [SerializeField] private MinigameSettings[] minigames;
+
+    //shared UI
+    [SerializeField] private GameObject minigameBGCanvas;
+    [SerializeField] private Slider timerBar;
+    [SerializeField] private TextMeshProUGUI instructionsText;
+    [SerializeField] private TextMeshProUGUI countdownText;
+
+    //yarnspinner stuff
+    [SerializeField] private DialogueRunner dialogueRunner;
+
+    private MinigameSettings currentSettings;
+    private Minigame currentMinigame;
+
+    private float currentTime;
+    private bool isRunning = false;
+
 
     [SerializeField] private GameObject myMinigameUI;
     [SerializeField] private Minigame myMinigame;
-    [SerializeField] private DialogueRunner dialogueRunner;
 
     [YarnCommand("start_minigame")]
     public IEnumerator StartMinigameCommand(string gameName)
