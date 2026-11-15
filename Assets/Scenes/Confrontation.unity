@@ -172,7 +172,7 @@ MonoBehaviour:
     minigame: {fileID: 1281881815}
     instructions: Spam the spacebar to overpower!
     countdownPrompt: Wrestle!
-    gameTime: 7
+    gameTime: 10
   - type: 4
     minigameCanvas: {fileID: 385432396}
     minigame: {fileID: 385432398}
@@ -181,7 +181,7 @@ MonoBehaviour:
     gameTime: 5
   minigameBGCanvas: {fileID: 766644435}
   timerBar: {fileID: 1324735062}
-  instructionsText: {fileID: 198734507}
+  instructionsText: {fileID: 885486621}
   countdownText: {fileID: 198734507}
   dialogueRunner: {fileID: 1654022988}
 --- !u!4 &80240558

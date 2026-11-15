@@ -70,11 +70,11 @@ public class PatternRecognition : MonoBehaviour
             {
                 WinCountGame();
             }
-            else
-            {
-                //if hit wrong number button
-                LoseCountGame();
-            }
+        }
+        else
+        {
+         //if hit wrong number button
+         LoseCountGame();
         }
     }
 

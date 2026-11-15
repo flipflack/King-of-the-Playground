@@ -6,28 +6,28 @@ title: Viviana_Bully_Start
 ---
 Viviana : Whats up with you?? 
 Viviana : Dork lookin ahh
-You : ??
-Viviana : What? 
-You : Whats up with that pimple
-Viviana : wh-wha? What pimple?
-Viviana : oh.. you're lying
-Viviana : what was that for anyway? 
-You : you mind giving it back
-Viviana : giving back what? I don't even know you
-Viviana : who the hell are you anyway
-You : You know.. the marbles you keep telling Grace you don't have
-    -> By the way, I'm Lola, the GOAT of this town
-        Viviana : Lola? 
-        Viviana : The goat? why are you a goat? what does that even mean..
-        Viviana : Anyways..
-    -> I'm Lola.. anyways what do you know about James??
-        Viviana : James is the king here 
-        Viviana : We are very good friends, he doesn't know that though
-        Viviana : Anyways..
-Viviana : What do you know??
-Viviana : Speaking of marbles, if Grace wants you to be her little lapdog so bad and have you get it for her instead of herself
-Viviana : How about playing this little game with me?
-<<start_minigame MinigameManager "marbles">>
+// You : ??
+// Viviana : What? 
+// You : Whats up with that pimple
+// Viviana : wh-wha? What pimple?
+// Viviana : oh.. you're lying
+// Viviana : what was that for anyway? 
+// You : you mind giving it back
+// Viviana : giving back what? I don't even know you
+// Viviana : who the hell are you anyway
+// You : You know.. the marbles you keep telling Grace you don't have
+//     -> By the way, I'm Lola, the GOAT of this town
+//         Viviana : Lola? 
+//         Viviana : The goat? why are you a goat? what does that even mean..
+//         Viviana : Anyways..
+//     -> I'm Lola.. anyways what do you know about James??
+//         Viviana : James is the king here 
+//         Viviana : We are very good friends, he doesn't know that though
+//         Viviana : Anyways..
+// Viviana : What do you know??
+// Viviana : Speaking of marbles, if Grace wants you to be her little lapdog so bad and have you get it for her instead of herself
+// Viviana : How about playing this little game with me?
+<<start_minigame MinigameManager "arm">>
 <<if $minigame_won>>
     Viviana : ...fine. You win. Here are the marbles
     <<set_phase "end">>
