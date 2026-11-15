@@ -24,6 +24,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
+        if (rectTransform == null)
+        {
+            Debug.LogError("DragDrop needs to be on the same GameObject as a RectTransform: " + gameObject.name);
+            return;
+        }
+
         originalPosition = rectTransform.position;
     }
 
@@ -98,13 +104,32 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         successfullyDropped = true;
         slot.wordScramble.CheckAnswer();
     }
-    public void SetOriginalPosition()
-    {
-        originalPosition = rectTransform.position;
-    }
-    public void ReturnHome()
-    {
-        currentSlot = null; 
-        rectTransform.position = originalPosition;
-    }
+    //public void SetOriginalPosition()
+    //{
+    //    rectTransform = GetComponent<RectTransform>();
+
+    //    if (rectTransform == null)
+    //    {
+    //        Debug.LogError(
+    //            "No RectTransform found on letter card: " + gameObject.name,
+    //            gameObject
+    //        );
+    //        return;
+    //    }
+
+    //    originalPosition = rectTransform.position;
+    //}
+    //public void ReturnHome()
+    //{
+    //    rectTransform = GetComponent<RectTransform>();
+
+    //    if (rectTransform == null)
+    //    {
+    //        Debug.LogError("No RectTransform found on: " + gameObject.name);
+    //        return;
+    //    }
+
+    //    currentSlot = null;
+    //    rectTransform.position = originalPosition;
+    //}
 }

@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2721155174e92ce4e9964352280ec15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragDrop
-  canvas: {fileID: 0}
+  canvas: {fileID: 1520330656}
   letter: 0
   currentSlot: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
@@ -3627,7 +3627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2721155174e92ce4e9964352280ec15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragDrop
-  canvas: {fileID: 0}
+  canvas: {fileID: 1520330656}
   letter: 0
   currentSlot: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
@@ -6955,7 +6955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2721155174e92ce4e9964352280ec15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragDrop
-  canvas: {fileID: 0}
+  canvas: {fileID: 1520330656}
   letter: 0
   currentSlot: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}

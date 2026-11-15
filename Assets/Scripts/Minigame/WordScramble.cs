@@ -73,15 +73,28 @@ public class WordScramble : MonoBehaviour
                 group.interactable = true;
                 group.blocksRaycasts = true;
             }
-            card.ReturnHome();
+          
         }
         //randomize card pos
         List<DragDrop> shuffledCards = letterCards.OrderBy(x => Random.value).ToList(); 
         for (int i = 0; i <shuffledCards.Count; i++)
         {
             shuffledCards[i].transform.SetSiblingIndex(i);
-            shuffledCards[i].SetOriginalPosition();
         }
+        //saving card location after!!! shuffling 
+        //foreach(DragDrop card in letterCards)
+        //{
+        //    if (card == null)
+        //    {
+        //        Debug.LogError("One of the Letter Cards in the Inspector list is EMPTY!");
+        //        continue;
+        //    }
+
+        //    Debug.Log("Checking card: " + card.gameObject.name);
+
+        //    //card.SetOriginalPosition();
+        //    //card.ReturnHome();
+        //}
 
     }
     

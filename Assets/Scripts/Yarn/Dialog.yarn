@@ -27,7 +27,7 @@ Viviana : Dork lookin ahh
 // Viviana : What do you know??
 // Viviana : Speaking of marbles, if Grace wants you to be her little lapdog so bad and have you get it for her instead of herself
 // Viviana : How about playing this little game with me?
-<<start_minigame MinigameManager "arm">>
+<<start_minigame MinigameManager "word">>
 <<if $minigame_won>>
     Viviana : ...fine. You win. Here are the marbles
     <<set_phase "end">>
