@@ -37,16 +37,20 @@ public class MinigameManager : MonoBehaviour
         countdownText.gameObject.SetActive(false);
     }
 
-    [YarnCommand("start_minigame")]
-    public IEnumerator StartMinigameCommand(string gameName)
+   [YarnCommand("start_minigame")]
+   public IEnumerator StartMinigameCommand(string gameName)
     {
-        //converting ys string to enum
-        if(!System.Enum.TryParse(gameName, true, out MinigameType selectedType))
+        if (!System.Enum.TryParse(
+            gameName, true, out MinigameType selectedType))
         {
-            Debug.Log("Not a minigame type:" + gameName);
+            Debug.LogError("Not a minigame type: " + gameName);
             yield break;
         }
-        
+
+        yield return RunMinigame(selectedType);
+    }
+    private IEnumerator RunMinigame(MinigameType selectedType)
+    {
         //finds matching minigame settings
         bool found = false; 
         
@@ -63,21 +67,23 @@ public class MinigameManager : MonoBehaviour
         //if this be broke
         if(!found)
         {
-            Debug.Log("no settings found fix yo shit for: " + gameName);
+            Debug.Log("no settings found fix yo shit for: " + selectedType);
             yield break;
         }
         if(currentSettings.minigameCanvas == null || currentSettings.minigame == null)
         {
-            Debug.Log("missing references for: " + gameName);
+            Debug.Log("missing references for: " + selectedType);
             yield break;
         }
 
         isRunning = true;
-        //turning on everything for the selected mg
+
         currentMinigame = currentSettings.minigame;
+
+        //turning on everything for the selected mg
         minigameBGCanvas.SetActive(true);
         instructionsText.text = currentSettings.instructions;
-        currentSettings.minigameCanvas.SetActive(true);
+        currentSettings.minigameCanvas.SetActive(false);
         currentTime = currentSettings.gameTime;
 
         if(timerBar != null)
@@ -91,8 +97,11 @@ public class MinigameManager : MonoBehaviour
         //start the game 
         yield return StartCoroutine(StartCountdown());
 
+        currentSettings.minigameCanvas.SetActive(true);
+        currentMinigame.StartGame();
 
-        while(!currentMinigame.IsFinished && currentTime >0)
+        //start game timer
+        while (!currentMinigame.IsFinished && currentTime >0)
         {
             currentTime -= Time.deltaTime;
             timerBar.value = Mathf.Max(0, currentTime);
@@ -111,7 +120,7 @@ public class MinigameManager : MonoBehaviour
         {
             dialogueRunner.VariableStorage.SetValue("$minigame_won", currentMinigame.DidPlayerWin);
         }
-        Debug.Log(currentMinigame.DidPlayerWin ? "won minigame" : "lost minigame");
+        Debug.Log("Minigame result: " + currentMinigame.DidPlayerWin);
 
         yield return new WaitForSeconds(1f);
 
@@ -138,6 +147,7 @@ public class MinigameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         countdownText.gameObject.SetActive(false);
-        currentMinigame.StartGame();
+        
     }
+    
 }
