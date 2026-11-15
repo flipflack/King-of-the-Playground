@@ -53,7 +53,7 @@ public class QuickClickerMG : MonoBehaviour
     }
 
     //called after the countdown
-    private void StartSheepGame()
+    public void StartSheepGame()
     {
         StartCoroutine(SpawnProg());
     }

@@ -9,15 +9,38 @@ public class ArmWrestleMG : MonoBehaviour
     //checking a certian treshold for winning
     //arm (rectangle) that moves left or right to display who is winning. Updates with float value
 
-    private float wrestleMatch= 0;
-    public float playerPower= 1f;
-    public float bullyPower= 2.6f;
+    private float wrestleMatch = 0;
+    public float playerPower = 1f;
+    public float bullyPower = 2.6f;
     //private float delay = 5f;
     //private float timeSinceSpacePressed = 0f;
     public TextMeshProUGUI matchCount;
     public GameObject arm;
     //public bool isAFK = false;
 
+    private bool gameActive = false;
+    private Minigame minigame;
+
+    private void Awake()
+    {
+        minigame = GetComponent<Minigame>();
+    }
+
+    //called in minigame.resetstate()
+    public void ResetArmWrestleGame()
+    {
+        gameActive = false;
+
+        wrestleMatch = 0;
+        playerPower = 1f;
+        bullyPower = 2.6f;
+        arm.transform.rotation = Quaternion.identity;
+    }
+    //called after countdown
+    public void StartArmWrestleGame()
+    {
+        gameActive = true;
+    }
     public void Update()
     {
         wrestleMatch -= bullyPower * Time.deltaTime;
@@ -70,10 +93,12 @@ public class ArmWrestleMG : MonoBehaviour
         if (wrestleMatch <= -40)
         {
             Debug.Log("lose");
+            minigame.Complete(false);
         }
         if (wrestleMatch >= 40)
         {
             Debug.Log("win");
+            minigame.Complete(true);
         }
     }
 }
