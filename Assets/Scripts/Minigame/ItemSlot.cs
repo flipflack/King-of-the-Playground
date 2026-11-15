@@ -7,6 +7,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public WordScramble wordScramble;
     public void OnDrop(PointerEventData eventData)
     {
+        if (wordScramble == null || !wordScramble.CanInteract)
+            return;
         Debug.Log("OnDrop");
         if (occupiedCard != null)
             return;

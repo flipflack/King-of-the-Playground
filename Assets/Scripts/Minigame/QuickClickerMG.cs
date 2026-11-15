@@ -20,70 +20,47 @@ public class QuickClickerMG : MonoBehaviour
 
     public int wspawnCount = 7;
     public int rspawnCount = 3;
-
     public float spawnInterval = 0.05f;
-    public float gameTime = 3f;
-    private float currentTime;
+    
     private bool gameActive = false;
-    private bool gameEnded = false;
-
     private int currentCount = 0;
-    [SerializeField]
-    private List<GameObject> redSheepList = new List<GameObject>();
 
-    public Slider timerBar;
-    public TextMeshProUGUI instructionsText;
-    public TextMeshProUGUI countdownText;
+    private List<GameObject> redSheepList = new List<GameObject>();
+    private List<GameObject> spawnedSheep = new List<GameObject>();
+
+    private Minigame minigame;
+
     private void Awake()
     {
-        StartCoroutine(StartCountdown());
+        minigame = GetComponent<Minigame>();
     }
-    IEnumerator StartCountdown()
+    
+    //called by Minigame.ResetState()
+    public void ResetSheepGame()
     {
-        Debug.Log("runningCountdown");
-        int count = 3;
-        while (count > 0)
-        {
-            countdownText.text = count.ToString();
-            yield return new WaitForSeconds(1f);
-            count--;
-        }
-        countdownText.text = "Red!";
-        yield return new WaitForSeconds(1f);
-        countdownText.gameObject.SetActive(false);
+        StopAllCoroutines();
+        gameActive = false;
+        currentCount = 0;
 
-        StartSheepGame();
+        //clearing previous sheep 
+        foreach(GameObject sheep in spawnedSheep)
+        {
+            if(sheep != null)
+                Destroy(sheep);
+        }
+        spawnedSheep.Clear();
+        redSheepList.Clear();
     }
+
+    //called after the countdown
     private void StartSheepGame()
     {
-        
-        //sheepSpawner(); 
-        currentTime = gameTime;
-        if (timerBar != null)
-        {
-            timerBar.maxValue = gameTime;
-            timerBar.value = gameTime;
-        }
         StartCoroutine(SpawnProg());
-
     }
-    private void Update()
-    {
-        if (!gameActive || gameEnded)
-            return;
-        currentTime -= Time.deltaTime;
-        if (timerBar != null)
-        {
-            timerBar.value = currentTime;
-        }
-        if (currentTime <= 0)
-        {
-            LoseSheepGame();
-        }
-    }
+   
     private IEnumerator SpawnProg()
     {
-        instructionsText.text = ("Click all of the red sheep!");
+        //instructionsText.text = ("Click all of the red sheep!");
         //Debug.Log("working");
         //Debug.Log(redSheepList);
         while (currentCount < wspawnCount + rspawnCount)
@@ -142,7 +119,7 @@ public class QuickClickerMG : MonoBehaviour
     }
     public void SheepClicked(GameObject sheep)
     {
-        if (!gameActive || gameEnded)
+        if (!gameActive || minigame.IsFinished)
             return;
         if (redSheepList.Contains(sheep))
         {
@@ -159,20 +136,20 @@ public class QuickClickerMG : MonoBehaviour
 
     private void WinSheepGame()
     {
-        gameEnded = true;
+        //gameEnded = true;
         gameActive = false;
         Debug.Log("won");
-        GetComponent<Minigame>().Complete(true);
+        minigame.Complete(true);
         //this.gameObject.SetActive(false);
     }
 
-    private void LoseSheepGame()
-    {
-        gameEnded = true;
-        gameActive=false;
-        Debug.Log("lost");
-        GetComponent<Minigame>().Complete(false);
-        //this.gameObject.SetActive(false);
-    }
+    //private void LoseSheepGame()
+    //{
+    //    gameEnded = true;
+    //    gameActive=false;
+    //    Debug.Log("lost");
+    //    GetComponent<Minigame>().Complete(false);
+    //    //this.gameObject.SetActive(false);
+    //}
 }
 

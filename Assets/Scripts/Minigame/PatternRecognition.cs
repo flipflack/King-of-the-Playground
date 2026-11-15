@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -14,145 +13,96 @@ public class PatternRecognition : MonoBehaviour
     //one sentence description of what to do ("Click the buttons from 1-10")
     //NOTE: needs to be changable per minigame 
 
-    //this and all the other minigames stuff will eventually move into gameManager or a minigamesManager
+    
     public List<Button> buttons;
     public List<Button> shuffledButtons;
     int counter = 0;
 
-    public float gameTime = 5f;
-    private float currentTime;
-    public Slider timerBar;
-
     public bool gameActive = false;
-    public bool gameEnded = false;
 
-    public TextMeshProUGUI instructionsText;
-    public TextMeshProUGUI countdownText;
-    public GameObject countingMinigameCanvas;
+    private Minigame minigame;
 
-    public void Start()
+    private void Awake()
     {
-        //Debug.Log("running");
-        StartCoroutine(StartCountdown());
+        minigame = GetComponent<Minigame>();            
     }
-    IEnumerator StartCountdown()
+    
+    //called in minigame.resetstate()
+    public void ResetCountingGame()
     {
-        Debug.Log("runningCountdown");
-        int count = 3;
-        while(count > 0)
-        {
-            countdownText.text = count.ToString();
-            yield return new WaitForSeconds(1f);
-            count--;
-        }
-        countdownText.text = "Count!";
-        yield return new WaitForSeconds(1f);
-        countdownText.gameObject.SetActive(false);
-        countingMinigameCanvas.SetActive(true); 
-        RestartTheGame();
-    }
-    private void Update()
-    {
-        if (!gameActive || gameEnded)
-            return;
-        currentTime -= Time.deltaTime;
-        if (timerBar != null)
-        {
-            timerBar.value = currentTime;
-        }
-        if (currentTime <= 0)
-        {
-            LoseCountGame();
-        }
-    }
-    public void RestartTheGame()
-    {
-        instructionsText.text = ("Click the buttons from 1 - 10");
-        currentTime = gameTime;
-        if (timerBar != null)
-        {
-            timerBar.maxValue = gameTime;
-            timerBar.value = gameTime;
-        }
-
         counter = 0;
-        currentTime = gameTime;
-        gameEnded = false;
-        gameActive = true;
+        gameActive = false;
 
-        if (timerBar != null)
-        {
-            timerBar.maxValue = gameTime;
-            timerBar.value = gameTime;
-        }
-
-        shuffledButtons = buttons.OrderBy(a => Random.Range(0, 100)).ToList();
-        for (int i = 1; i < 11; i++)
-        {
-           // shuffledButtons[i - 1].GetComponentInChildren<Text>().text = i.ToString();
-            shuffledButtons[i-1].GetComponentInChildren<TextMeshProUGUI>().text = i.ToString();
-            shuffledButtons[i - 1].interactable = true;
-            shuffledButtons[i - 1].image.color = new Color32(177, 220, 233, 255);
-        }
-        gameActive = true;
+        shuffledButtons = buttons.OrderBy(x => Random.value).ToList();  
         
+        for(int i = 0; i < shuffledButtons.Count; i++)
+        {
+            Button button = shuffledButtons[i];
+
+            button.GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
+            button.interactable = true;
+            button.image.color = new Color32(177, 220, 233, 255);
+
+        }
     }
+    
+    //called after countdown
+    public void StartCountingGame()
+    {
+        gameActive = true;
+    }
+    
     public void pressButton(Button button)
     {
         //cant press button after game ends
-        if (!gameActive || gameEnded)
+        if (!gameActive || minigame.IsFinished)
             return;
 
-        if (int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text) - 1 == counter)
+        int buttonNumber = int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text);
+
+        if(buttonNumber - 1 == counter)
         {
+            //correct button pressed
             counter++;
             button.interactable = false;
             button.image.color = Color.green;
-
-            if (counter == 10)
+            if(counter == buttons.Count)
             {
-                StartCoroutine(presentResult(true));
+                WinCountGame();
             }
-           
-        }
-        else
-        {
-            StartCoroutine(presentResult(false));
+            else
+            {
+                //if hit wrong number button
+                LoseCountGame();
+            }
         }
     }
 
-    public IEnumerator presentResult(bool win)
+    private void WinCountGame()
     {
-        gameEnded = true;
         gameActive = false;
+        Debug.Log("won count mg");
+        
+        foreach(Button button in shuffledButtons)
+        {
+            button.image.color = Color.green;
+            button.interactable = false;
+        }
 
-        if (!win)
-        {
-            Debug.Log("lost");
-            foreach (var button in shuffledButtons)
-            {
-                button.image.color = Color.red;
-                button.interactable = false;
-            }
-        }
-        else
-        {
-            Debug.Log("won");
-            foreach (var button in shuffledButtons)
-            {
-                button.image.color = Color.green;
-                button.interactable = false;
-            }
-        }
-            yield return new WaitForSeconds(2f);
-       // RestartTheGame();
-       //it will say a you win
-       //then dialog then next minigame
+        minigame.Complete(true);
     }
     private void LoseCountGame()
     {
-        if (gameEnded || !gameActive)
-            return;
-        StartCoroutine(presentResult(false));
+        gameActive = false;
+        Debug.Log("lose count mg");
+
+        foreach(Button button in shuffledButtons)
+        {
+            button.image.color = Color.red;
+            button.interactable = false;    
+        }
+
+        minigame.Complete(false);
     }
+   
 }

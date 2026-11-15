@@ -86,10 +86,11 @@ public class MinigameManager : MonoBehaviour
             timerBar.value = currentTime;
         }
 
+        currentMinigame.ResetState();
+
         //start the game 
         yield return StartCoroutine(StartCountdown());
 
-        currentMinigame.ResetState();
 
         while(!currentMinigame.IsFinished && currentTime >0)
         {
@@ -137,5 +138,6 @@ public class MinigameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         countdownText.gameObject.SetActive(false);
+        currentMinigame.StartGame();
     }
 }

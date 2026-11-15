@@ -15,6 +15,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public Vector3 originalPosition;
     private Vector3 dragStartPosition;
     private bool successfullyDropped;
+    private bool dragAllowed;
+
+    public WordScramble wordScramble;
 
     private void Awake()
     {
@@ -34,34 +37,44 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         Debug.Log("OnBeginDrag");
 
-        canvasGroup.blocksRaycasts = false;
+        //so unity doens't keep dragging the card after the game ends bruh
+        dragAllowed = wordScramble != null && wordScramble.CanInteract;
+        if (!dragAllowed)
+            return;
+
         dragStartPosition = rectTransform.position;
         successfullyDropped = false;
 
-        if(currentSlot !=null)
+        if (currentSlot != null)
         {
             currentSlot.ClearSlot();
             currentSlot = null;
         }
-        transform.SetAsLastSibling();
 
+        transform.SetAsLastSibling();
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         //Debug.Log("OnDrag");
+        if (!dragAllowed)
+            return;
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
+        if (!dragAllowed)
+            return;
         canvasGroup.blocksRaycasts = true;
         //return to previos pos if not placed in a slot (ehhh not so sure abt this)
         //if(!successfullyDropped)
         //{
         //    rectTransform.position = dragStartPosition;
         //}
+        dragAllowed = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
