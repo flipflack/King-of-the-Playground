@@ -25,8 +25,10 @@ public class QuickClickerMG : MonoBehaviour
     private bool gameActive = false;
     private int currentCount = 0;
 
-    private List<GameObject> redSheepList = new List<GameObject>();
-    private List<GameObject> spawnedSheep = new List<GameObject>();
+    public bool playedGame1 = false;
+
+    public List<GameObject> redSheepList = new List<GameObject>();
+    public List<GameObject> spawnedSheep = new List<GameObject>();
 
     private Minigame minigame;
 
@@ -48,6 +50,11 @@ public class QuickClickerMG : MonoBehaviour
             if(sheep != null)
                 Destroy(sheep);
         }
+        foreach(GameObject sheep in redSheepList)
+        {
+            if (sheep != null)
+                Destroy(sheep);
+        }
         spawnedSheep.Clear();
         redSheepList.Clear();
     }
@@ -63,6 +70,12 @@ public class QuickClickerMG : MonoBehaviour
         //instructionsText.text = ("Click all of the red sheep!");
         //Debug.Log("working");
         //Debug.Log(redSheepList);
+        if(playedGame1)
+        {
+            wspawnCount = 10;
+            rspawnCount = 5;
+        }
+
         while (currentCount < wspawnCount + rspawnCount)
         {
             sheepSpawner();
@@ -71,6 +84,8 @@ public class QuickClickerMG : MonoBehaviour
         }
 
         gameActive = true;
+        playedGame1 = true;
+        Debug.Log("playedGame1" + playedGame1);
     }
 
     public void sheepSpawner()
@@ -115,16 +130,21 @@ public class QuickClickerMG : MonoBehaviour
                 sheepButton.onClick.AddListener(() => SheepClicked(newSheep));
             }
         }
+        else
+        {
+            spawnedSheep.Add(newSheep);
+        }
 
     }
     public void SheepClicked(GameObject sheep)
     {
         if (!gameActive || minigame.IsFinished)
             return;
+        
         if (redSheepList.Contains(sheep))
         {
-            redSheepList.Remove(sheep);
             Destroy(sheep);
+            redSheepList.Remove(sheep);
             Debug.Log("got red sheep, remaining: " + redSheepList.Count);
 
             if (redSheepList.Count == 0)
@@ -132,6 +152,7 @@ public class QuickClickerMG : MonoBehaviour
                 WinSheepGame();
             }
         }
+        Debug.Log("played marble 1: " + playedGame1);
     }
 
     private void WinSheepGame()

@@ -16,7 +16,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI instructionsText;
     [SerializeField] private TextMeshProUGUI countdownText;
 
-    //yarnspinner stuff
+    //yarnspinner dialogue
     [SerializeField] private DialogueRunner dialogueRunner;
 
     private MinigameSettings currentSettings;
