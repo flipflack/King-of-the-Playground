@@ -18,9 +18,9 @@ public class QuickClickerMG : MonoBehaviour
 
     public RectTransform spawnArea;
 
-    public int wspawnCount = 7;
-    public int rspawnCount = 3;
-    public float spawnInterval = 0.05f;
+    public int wspawnCount;
+    public int rspawnCount;
+    private float spawnInterval = 0.02f;
     
     private bool gameActive = false;
     private int currentCount = 0;
@@ -70,10 +70,12 @@ public class QuickClickerMG : MonoBehaviour
         //instructionsText.text = ("Click all of the red sheep!");
         //Debug.Log("working");
         //Debug.Log(redSheepList);
+        wspawnCount = Random.Range(8, 10);
+        rspawnCount = Random.Range(2, 4);
         if(playedGame1)
         {
-            wspawnCount = 10;
-            rspawnCount = 5;
+            wspawnCount = Random.Range(10,14);
+            rspawnCount = Random.Range(4,6);
         }
 
         while (currentCount < wspawnCount + rspawnCount)
