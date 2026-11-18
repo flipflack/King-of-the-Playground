@@ -850,6 +850,9 @@ MonoBehaviour:
   target: {fileID: 1921246963}
   dampTime: 0
   followOffset: {x: 0, y: 0, z: 0}
+  background: {fileID: 1412216376}
+  manualMinX: -10
+  manualMaxX: 10
 --- !u!1 &530433153
 GameObject:
   m_ObjectHideFlags: 0
