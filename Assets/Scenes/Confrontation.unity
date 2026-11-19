@@ -1985,7 +1985,9 @@ MonoBehaviour:
   spawnArea: {fileID: 1096464616}
   wspawnCount: 7
   rspawnCount: 3
-  spawnInterval: 0.05
+  playedGame1: 0
+  redSheepList: []
+  spawnedSheep: []
 --- !u!114 &574711747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4736,7 +4738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1281881813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4770,10 +4772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4480cbc5d9eefbb4ca2924a83962c42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArmWrestleMG
-  playerPower: 1
   bullyPower: 2.6
-  matchCount: {fileID: 766992731}
   arm: {fileID: 1710020475}
+  playedGame1: 0
 --- !u!114 &1281881815
 MonoBehaviour:
   m_ObjectHideFlags: 0
