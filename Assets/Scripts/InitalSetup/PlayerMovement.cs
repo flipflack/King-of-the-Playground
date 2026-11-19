@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
+    public SpriteRenderer spriteRenderer;
 
     private Vector2 movementInput;
 
@@ -17,5 +18,14 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
+
+        if (movementInput.x <0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        if (movementInput.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 }

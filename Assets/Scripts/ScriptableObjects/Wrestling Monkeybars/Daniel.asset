@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b738fedce6b9d0f4b9ddf2563aa528eb, type: 3}
-  m_Name: Grace
+  m_Name: Daniel
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Data
-  npcName: Grace
-  startingNode: Grace_Victim_Start
-  endingNode: Grace_Victim_End
-  npcSprite: {fileID: -3028437699459830311, guid: dea604d3502d9c04cab2d5c49390eaee, type: 3}
+  npcName: Daniel
+  startingNode: Daniel_Bully_Start
+  endingNode: Dnaiel_Bully_End
+  npcSprite: {fileID: 175040981031741859, guid: 9694069b968933e4b8ee42435e088bca, type: 3}
   currentPhase: 0

@@ -22,20 +22,28 @@ public class MapController : MonoBehaviour
             open = false;
         }
    }
-    public void mainButton()
+    public void Slide()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Numbers Slide");
     }
-    public void countButton()
+    public void MonkeyBar()
     {
-        SceneManager.LoadScene("PatternMG");
+        SceneManager.LoadScene("Wrestling Monkeybars");
     }
-    public void wordButton()
+    public void Swings()
     {
-        SceneManager.LoadScene("WordMG");
+        SceneManager.LoadScene("Words Swings");
     }
-    public void sheepButton()
+    public void Sandbox()
     {
-        SceneManager.LoadScene("SheepMG");
+        SceneManager.LoadScene("(Tutorial) Marble Sandbox");
+    }
+    public void Roundabout()
+    {
+        SceneManager.LoadScene("Plushie Roundabout");
+    }
+    public void Tower()
+    {
+        SceneManager.LoadScene("The Tower");
     }
 }

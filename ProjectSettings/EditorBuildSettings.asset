@@ -6,22 +6,25 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/(Tutorial) Marble Sandpit.unity
+    path: Assets/Scenes/(Tutorial) Marble Sandbox.unity
     guid: 473784a9d1e4c434e9460b4e05f40751
   - enabled: 1
     path: Assets/Scenes/Confrontation.unity
     guid: 6901ebf3fa72dbe4d8b254aa857cee3c
-  - enabled: 0
-    path: Assets/Scenes/MinigameTesting.unity
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Minigames/PatternMG.unity
-    guid: 44a774c4dd1d0134d8775966408fc619
+    path: Assets/Scenes/Numbers Slide.unity
+    guid: 7b37a171631c240478ea2933097e46ba
   - enabled: 1
-    path: Assets/Scenes/Minigames/SheepMG.unity
-    guid: d683fb8e0cc48c24386ab63114f4cfaf
+    path: Assets/Scenes/Wrestling Monkeybars.unity
+    guid: ef426d12bc68a764385fde1103a30419
   - enabled: 1
-    path: Assets/Scenes/Minigames/WordMG.unity
-    guid: feccd053043938344b7ae65a3fc8c9fe
+    path: Assets/Scenes/Words Swings.unity
+    guid: 5ca6acf1a23538d429fee1e78f248a4d
+  - enabled: 1
+    path: Assets/Scenes/The Tower.unity
+    guid: accb1faab6a870e469238a6b812d22c9
+  - enabled: 1
+    path: Assets/Scenes/Plushie Roundabout.unity
+    guid: 953fec899f3e2bb4ba500aee25f8feab
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
