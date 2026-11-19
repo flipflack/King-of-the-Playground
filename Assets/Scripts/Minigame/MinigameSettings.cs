@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum MinigameType { marbles, counting, word, arm, sewing}
+public enum MinigameType { marbles, counting, word, arm, sewing, word2}
 
 [Serializable]
 //universal settings for all the minigames 
