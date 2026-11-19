@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Minigame : MonoBehaviour
 {
     public bool IsFinished { get; private set; }
     public bool DidPlayerWin { get; private set; }
+
+    public UnityEvent onResetState;
+    public UnityEvent onStartGame;
 
     public void Complete(bool playerWon)
     {
@@ -16,5 +20,12 @@ public class Minigame : MonoBehaviour
     {
         IsFinished = false;
         DidPlayerWin = false;
+
+        //runs the individual minigames reset functions 
+        onResetState?.Invoke();
+    }
+    public void StartGame()
+    {
+        onStartGame?.Invoke();  
     }
 }
