@@ -8,9 +8,12 @@ public class SewingStats : MonoBehaviour
     public Vector3 startPos;
     public Stitch stictchNum;
 
-    void Start()
+    public SewingMinigame sewingMG;
+    public RectTransform rectTransform;
+
+    private void Awake()
     {
-        startPos = transform.position;
+        rectTransform = GetComponent<RectTransform>();  
     }
 
    
