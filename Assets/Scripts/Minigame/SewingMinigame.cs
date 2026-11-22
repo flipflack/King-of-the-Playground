@@ -11,7 +11,7 @@ public class SewingMinigame : MonoBehaviour
     public RectTransform threadContainer;
     public Image threadPrefab;
     public Color threadColor = new Color(0.45f, 0.12f, 0.08f);
-    public float threadThickness = 5f;
+    private float threadThickness = 3f;
     public Minigame minigame;
     public int completedStitches = 0;
     private bool isSewing = false;
@@ -28,7 +28,7 @@ public class SewingMinigame : MonoBehaviour
             if(stitchPoints[i] != null)
             {
                 stitchPoints[i].sewingMG = this;
-                stitchPoints[i].stictchNum = (Stitch)i;
+                //stitchPoints[i].stictchNum = (Stitch)i;
             }    
         }
         CreateTempThread();
