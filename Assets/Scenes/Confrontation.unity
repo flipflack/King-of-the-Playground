@@ -1155,7 +1155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &169060201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,6 @@ MonoBehaviour:
   threadContainer: {fileID: 257927999}
   threadPrefab: {fileID: 8628148327336701772, guid: 59ce1c70eca54194184bf6e868c7300f, type: 3}
   threadColor: {r: 0.45, g: 0.12, b: 0.08, a: 1}
-  threadThickness: 5
   minigame: {fileID: 169060203}
   completedStitches: 0
   currentPoint: {fileID: 0}
@@ -1320,7 +1319,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 177663023}
 --- !u!114 &177663020
@@ -1559,8 +1557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 38b9bb0a91de23f4782118d5eb84837f, type: 2}
+  m_sharedMaterial: {fileID: 7211178108756241221, guid: 38b9bb0a91de23f4782118d5eb84837f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1691,7 +1689,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 222183793}
 --- !u!114 &222183795
@@ -1780,7 +1777,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 250373297}
 --- !u!114 &250373294
@@ -2398,7 +2394,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 355911656}
 --- !u!114 &355911658
@@ -2835,7 +2830,6 @@ MonoBehaviour:
   threadContainer: {fileID: 177098764}
   threadPrefab: {fileID: 8628148327336701772, guid: 59ce1c70eca54194184bf6e868c7300f, type: 3}
   threadColor: {r: 0.45, g: 0.12, b: 0.08, a: 1}
-  threadThickness: 5
   minigame: {fileID: 385432398}
   completedStitches: 0
   currentPoint: {fileID: 0}
@@ -4369,7 +4363,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 834574611}
 --- !u!114 &834574608
@@ -4906,8 +4899,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1bdb58eb0ec622d4ea280bff8578c11f, type: 2}
+  m_sharedMaterial: {fileID: 4992391837290616100, guid: 1bdb58eb0ec622d4ea280bff8578c11f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5547,7 +5540,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1026632049}
 --- !u!114 &1026632046
@@ -6150,7 +6142,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1127192513}
 --- !u!114 &1127192516
@@ -6384,7 +6375,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1184128100}
 --- !u!114 &1184128102
@@ -6877,7 +6867,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1226683988}
 --- !u!114 &1226683985
@@ -7662,7 +7651,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1366178458}
 --- !u!114 &1366178461
@@ -8321,7 +8309,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 1547938273}
 --- !u!114 &1547938270
@@ -8519,7 +8506,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1604587641}
 --- !u!114 &1604587638
@@ -8659,7 +8645,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 1612714205}
 --- !u!114 &1612714208
@@ -8868,7 +8853,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 1636428231}
 --- !u!114 &1636428228
@@ -8977,6 +8961,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2958262986520364888, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262986520364888, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bdb58eb0ec622d4ea280bff8578c11f, type: 2}
+    - target: {fileID: 2958262986520364888, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262986520364888, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4992391837290616100, guid: 1bdb58eb0ec622d4ea280bff8578c11f, type: 2}
+    - target: {fileID: 2958262986520364888, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2958262987206614837, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8999,6 +9003,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2958262987206614837, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262987206614838, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262987206614838, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a3ffaa470ce06ea45b19e4821f7629ef, type: 2}
+    - target: {fileID: 2958262987206614838, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262987206614838, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262987206614838, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2331076856257825720, guid: a3ffaa470ce06ea45b19e4821f7629ef, type: 2}
+    - target: {fileID: 2958262987206614838, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3859336324316773513, guid: 52571f68872914e24837210513edea1d, type: 3}
@@ -9700,7 +9728,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 1792060249}
 --- !u!114 &1792060246
@@ -9827,7 +9854,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 385432399}
   rectTransform: {fileID: 1833200237}
 --- !u!114 &1833200239
@@ -10186,7 +10212,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 1910856207}
 --- !u!114 &1910856204
@@ -10685,7 +10710,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 2018302985}
 --- !u!114 &2018302989
@@ -10736,7 +10760,6 @@ MonoBehaviour:
   movable: 0
   moving: 0
   startPos: {x: 0, y: 0, z: 0}
-  stictchNum: 0
   sewingMG: {fileID: 169060202}
   rectTransform: {fileID: 2019737160}
 --- !u!114 &2019737157
