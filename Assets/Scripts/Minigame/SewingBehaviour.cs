@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SewingBehaviour : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler
+public class SewingBehaviour : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public SewingStats sewStatsS;
 
@@ -15,17 +15,6 @@ public class SewingBehaviour : MonoBehaviour, IPointerDownHandler, IPointerEnter
         sewStatsS.sewingMG.BeginSewing(sewStatsS);
     }
    
-   
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //have to be holding down mouse button to sew
-        if(eventData.pointerPress != null)
-        { 
-            sewStatsS.sewingMG.TryStitch(sewStatsS);
-        }
-        Debug.Log("mouseOver");
-    }
-    
     public void OnPointerUp(PointerEventData eventData)
     {
         sewStatsS.sewingMG.StopSewing();
