@@ -27,14 +27,14 @@ Viviana : Dork lookin ahh
 // Viviana : What do you know??
 // Viviana : Speaking of marbles, if Grace wants you to be her little lapdog so bad and have you get it for her instead of herself
 // Viviana : How about playing this little game with me?
-<<start_minigame MinigameManager "sewing">>
+<<start_minigame MinigameManager "counting">>
 <<if $minigame_won>>
     Viviana : One more time.
     <<set_phase "end">>
 <<else>>
     Viviana : One more timeee.
 <<endif>>
-<<start_minigame MinigameManager "sewing">>
+<<start_minigame MinigameManager "counting">>
 <<if $minigame_won>>
     Viviana : ...fine. You win. Here are the marbles
     <<set_phase "end">>

@@ -16,9 +16,11 @@ public class PatternRecognition : MonoBehaviour
     
     public List<Button> buttons;
     public List<Button> shuffledButtons;
-    int counter = 0;
+    private int counter = 0;
+
 
     public bool gameActive = false;
+    public bool playedGame1 = false;
 
     private Minigame minigame;
 
@@ -26,26 +28,37 @@ public class PatternRecognition : MonoBehaviour
     {
         minigame = GetComponent<Minigame>();            
     }
-    
+
     //called in minigame.resetstate()
     public void ResetCountingGame()
     {
         counter = 0;
         gameActive = false;
 
-        shuffledButtons = buttons.OrderBy(x => Random.value).ToList();  
-        
-        for(int i = 0; i < shuffledButtons.Count; i++)
+        shuffledButtons = buttons.OrderBy(x => Random.value).ToList();
+
+        for (int i = 0; i < shuffledButtons.Count; i++)
         {
             Button button = shuffledButtons[i];
 
-            button.GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
+            if (!playedGame1)
+            {
+                //First game goes up by 1
+                button.GetComponentInChildren<TextMeshProUGUI>().text =
+                    (i + 1).ToString();
+            }
+            else
+            {
+                //Second game goes up by 2
+                button.GetComponentInChildren<TextMeshProUGUI>().text =
+                    ((i + 1) * 2).ToString();
+            }
+
             button.interactable = true;
             button.image.color = new Color32(177, 220, 233, 255);
-
         }
     }
-    
+
     //called after countdown
     public void StartCountingGame()
     {
@@ -60,21 +73,33 @@ public class PatternRecognition : MonoBehaviour
 
         int buttonNumber = int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text);
 
-        if(buttonNumber - 1 == counter)
+        int expectedNumber;
+
+        //second game checks for 2,4,6,8,10 etc.
+        if(playedGame1)
+        {
+            expectedNumber = (counter + 1) * 2;
+        }
+        //first game checks for 1-10
+        else
+        {
+            expectedNumber = counter + 1;
+        }
+        if (buttonNumber == expectedNumber)
         {
             //correct button pressed
             counter++;
             button.interactable = false;
             button.image.color = Color.green;
-            if(counter == buttons.Count)
+            if (counter == buttons.Count)
             {
                 WinCountGame();
             }
         }
         else
         {
-         //if hit wrong number button
-         LoseCountGame();
+            //if hit wrong number button
+            LoseCountGame();
         }
     }
 
@@ -88,7 +113,7 @@ public class PatternRecognition : MonoBehaviour
             button.image.color = Color.green;
             button.interactable = false;
         }
-
+        playedGame1 = true;
         minigame.Complete(true);
     }
     private void LoseCountGame()
@@ -101,7 +126,7 @@ public class PatternRecognition : MonoBehaviour
             button.image.color = Color.red;
             button.interactable = false;    
         }
-
+        playedGame1 = true;
         minigame.Complete(false);
     }
    
