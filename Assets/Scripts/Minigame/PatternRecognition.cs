@@ -17,7 +17,7 @@ public class PatternRecognition : MonoBehaviour
     public List<Button> buttons;
     public List<Button> shuffledButtons;
     private int counter = 0;
-
+    private int incNum;
 
     public bool gameActive = false;
     public bool playedGame1 = false;
@@ -37,26 +37,23 @@ public class PatternRecognition : MonoBehaviour
 
         shuffledButtons = buttons.OrderBy(x => Random.value).ToList();
 
-        for (int i = 0; i < shuffledButtons.Count; i++)
+        if(!playedGame1)
         {
-            Button button = shuffledButtons[i];
-
-            if (!playedGame1)
-            {
-                //First game goes up by 1
-                button.GetComponentInChildren<TextMeshProUGUI>().text =
-                    (i + 1).ToString();
-            }
-            else
-            {
-                //Second game goes up by 2
-                button.GetComponentInChildren<TextMeshProUGUI>().text =
-                    ((i + 1) * 2).ToString();
-            }
-
-            button.interactable = true;
-            button.image.color = new Color32(177, 220, 233, 255);
+         incNum = Random.Range(1, 3);
+            Debug.Log("incNum1:"+ incNum);
         }
+        else
+        {
+          incNum = Random.Range(3, 5);
+            Debug.Log("incNum2:" + incNum);
+        }
+            for (int i = 0; i < shuffledButtons.Count; i++)
+            {
+                Button button = shuffledButtons[i];
+                button.GetComponentInChildren<TextMeshProUGUI>().text = ((i + 1) * incNum).ToString();
+                button.interactable = true;
+                button.image.color = new Color32(177, 220, 233, 255);
+            }
     }
 
     //called after countdown
@@ -73,18 +70,8 @@ public class PatternRecognition : MonoBehaviour
 
         int buttonNumber = int.Parse(button.GetComponentInChildren<TextMeshProUGUI>().text);
 
-        int expectedNumber;
-
-        //second game checks for 2,4,6,8,10 etc.
-        if(playedGame1)
-        {
-            expectedNumber = (counter + 1) * 2;
-        }
-        //first game checks for 1-10
-        else
-        {
-            expectedNumber = counter + 1;
-        }
+        int expectedNumber = (counter + 1) * incNum;
+        
         if (buttonNumber == expectedNumber)
         {
             //correct button pressed

@@ -3832,6 +3832,7 @@ MonoBehaviour:
   - {fileID: 473176761}
   shuffledButtons: []
   gameActive: 0
+  playedGame1: 0
 --- !u!114 &785085566
 MonoBehaviour:
   m_ObjectHideFlags: 0
