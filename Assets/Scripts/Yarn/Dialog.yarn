@@ -270,7 +270,7 @@ title: Kevin_Bully_Questions
     Lola: You know I’m sure Daisy could help you too.
     Kevin: No way! That’s too embarrassing. You help me.
     <<set $minigame_won to false>>
-    <<start_minigame MinigameManager "words">>
+    <<start_minigame MinigameManager "word">>
 -> Lola : Do you know James?
     Kevin : Yeah we’re friends. He helps me all the time.
     Lola : Really how?
@@ -284,7 +284,7 @@ title: Kevin_Bully_Questions
     Lola: You know I’m sure Daisy could help you.
     Kevin: No way! That’s too embarrassing. You help me. Then maybe I’ll ask her. 
     <<set $minigame_won to false>>
-    <<start_minigame MinigameManager "words">>
+    <<start_minigame MinigameManager "word">>
 -> Lola : Why are you mean to Daisy? 
     Kevin: Cause being mean gets attention duh?
     Lola: Huh? Who told you that?
@@ -296,7 +296,7 @@ title: Kevin_Bully_Questions
     Lola: Sure you don't. You know she loves reading. Maybe you could write her something to get her attention?
     Kevin: Fine but you have to help me write it.
     <<set $minigame_won to false>>
-    <<start_minigame MinigameManager "words">>
+    <<start_minigame MinigameManager "word">>
 <<jump Kevin_Bully_Midpoint>>
 ===
 
@@ -315,7 +315,7 @@ Kevin: Did that word just make sense! How did you do that?
 Kevin: That was so cool.
 Kevin: Again! Again!
 <<set $minigame_won to false>>
-<<start_minigame MinigameManager "words2">>
+<<start_minigame MinigameManager "word2">>
 <<jump Kevin_Bully_End>>
 ===
 
@@ -330,7 +330,7 @@ Kevin: I can’t do it. Daisy is never going to like me.
 Lola : They're just mixed up.
 Lola : Try the first letter again.
 <<set $minigame_won to false>>
-<<start_minigame MinigameManager "words2">>
+<<start_minigame MinigameManager "word2">>
 <<jump Kevin_Bully_End>>
 ===
 
@@ -638,7 +638,7 @@ Daniel: Hold on, best of two! You got lucky.
 Lola : You’re breathing really hard, just say you lost to a girl.
 Daniel : NO I DIDN’T! It’s out of two!
 <<set $minigame_won to false>>
-<<start_minigame MinigameManager "armwrestle">>
+<<start_minigame MinigameManager "arm">>
 <<jump Daniel_Bully_End>>
 ===
 
@@ -648,7 +648,7 @@ Daniel: HA! You’re even wimpier than Wheezie is. Wimp and Wheeze hahaha.
 Lola: Shut up! You barely even won. 
 Daniel: Oh yeah? Let’s go again, it’s fun seeing how wimpy you are.
 <<set $minigame_won to false>>
-<<start_minigame MinigameManager "armwrestle">>
+<<start_minigame MinigameManager "arm">>
 <<jump Daniel_Bully_End>>
 ===
 
