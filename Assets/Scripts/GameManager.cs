@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     public NPC_Data CurrentNPC { get; private set; }
     public string ReturnScene { get; private set; }
+
+    // where Lola was standing when she started talking, so she comes back to the same spot
+    private bool hasReturnPosition;
+    private Vector3 returnPosition;
+    private bool returnFlipX;
     private InMemoryVariableStorage variableStorage;
 
     // Each NPC's dialogue phase, kept here (not on the ScriptableObject) so it
@@ -44,6 +49,14 @@ public class GameManager : MonoBehaviour
     {
         CurrentNPC = npc;
         ReturnScene = SceneManager.GetActiveScene().name;
+
+        PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+        hasReturnPosition = player != null;
+        if (player != null)
+        {
+            returnPosition = player.transform.position;
+            returnFlipX = player.spriteRenderer != null && player.spriteRenderer.flipX;
+        }
         SceneManager.LoadScene(sceneToLoad);
     }
 
@@ -56,6 +69,12 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (Instance != this) return;   // ignore events meant for an old/duplicate GameManager
+
+        if (hasReturnPosition && scene.name == ReturnScene && CurrentNPC == null)
+        {
+            RestorePlayerPosition();
+            return;
+        }
         if (CurrentNPC == null) return;   // not in a conversation (e.g. returning to the overworld)
 
         DialogueRunner runner = FindAnyObjectByType<DialogueRunner>();
@@ -97,6 +116,30 @@ public class GameManager : MonoBehaviour
     private void OnDialogueComplete()
     {
         EndConversation();
+    }
+
+    private void RestorePlayerPosition()
+    {
+        hasReturnPosition = false;
+
+        PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
+        if (player == null) return;
+
+        player.transform.position = returnPosition;
+        if (player.rb != null)
+        {
+            player.rb.position = returnPosition;
+            player.rb.linearVelocity = Vector2.zero;
+        }
+        if (player.spriteRenderer != null) player.spriteRenderer.flipX = returnFlipX;
+
+        // snap the camera straight to her instead of sliding over from the spawn point
+        Camera cam = Camera.main;
+        if (cam != null)
+        {
+            Vector3 camPos = cam.transform.position;
+            cam.transform.position = new Vector3(returnPosition.x, camPos.y, camPos.z);
+        }
     }
 
     public NPC_Data.dialogPhase GetPhase(NPC_Data npc)

@@ -4,6 +4,9 @@
 <<declare $knows_james_name = false>>
 <<declare $asked_daisy_book = false>>
 <<declare $asked_kevin_writing = false>>
+<<declare $asked_evan_daniel = false>>
+<<declare $asked_evan_lunchbox = false>>
+<<declare $asked_evan_james = false>>
 <<declare $kevin_won = false>>
 <<declare $kevin_done = false>>
 <<declare $diana_won = false>>
@@ -565,21 +568,36 @@ Evan: It’s ok, thanks.
 
 title: Evan_Victim_Questions
 ---
--> Ask about Daniel
-    Evan: Oh I forgot you’re new here. Daniel is just another jerk. He finds it funny to steal things because he can. 
-    Evan: He’s always giving our stuff to James. Other jerks do it too but Daniel steals the most. 
-    Evan: That's why he and James are best friends. Two jerks in a jerky sandwich. 
--> Ask about lunch box
+-> Ask about Daniel <<if not $asked_evan_daniel>>
+    <<set $asked_evan_daniel to true>>
+    Evan: Oh I forgot you’re new here. Daniel is just another jerk. He finds it funny to steal things because he can.
+    Evan: He’s always giving our stuff to James. Other jerks do it too but Daniel steals the most.
+    Evan: That's why he and James are best friends. Two jerks in a jerky sandwich.
+    <<if $asked_evan_daniel and $asked_evan_lunchbox and $asked_evan_james>>
+        <<stop>>
+    <<endif>>
+    <<jump Evan_Victim_Questions>>
+-> Ask about lunch box <<if not $asked_evan_lunchbox>>
+    <<set $asked_evan_lunchbox to true>>
     Evan: It’s my limited edition Ninja Turtles lunch box. Dad said it was the last one left and I couldn’t lose it this time.
     Lola: This time? How many times have you lost your lunch box?
-    Evan: Well I had Spiderman, then Transformers, then Scooby Doo. 
+    Evan: Well I had Spiderman, then Transformers, then Scooby Doo.
     Lola: What happened to them?
     Evan: Daniel, Kevin, and Viviana. I guess Daniel wanted an extra point….
--> Ask about James
+    <<if $asked_evan_daniel and $asked_evan_lunchbox and $asked_evan_james>>
+        <<stop>>
+    <<endif>>
+    <<jump Evan_Victim_Questions>>
+-> Ask about James <<if not $asked_evan_james>>
+    <<set $asked_evan_james to true>>
     Lola: Is James mean to everyone? He stole my bunny in school today.
     Evan: Yeah he’s the biggest jerk. Was your bunny a limited edition item too? My lunch box was.
     Lola: It was from my mom. From before she was gone. (lola looks away sad)
-    Evan: Oh sorry. Then you have to get it back! Talk to Daniel, he’s mean but he will get you closer to James. 
+    Evan: Oh sorry. Then you have to get it back! Talk to Daniel, he’s mean but he will get you closer to James.
+    <<if $asked_evan_daniel and $asked_evan_lunchbox and $asked_evan_james>>
+        <<stop>>
+    <<endif>>
+    <<jump Evan_Victim_Questions>>
 ===
 
 title: Evan_Victim_End
