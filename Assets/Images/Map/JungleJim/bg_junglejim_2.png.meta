@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0ee8fe2bf93214447a73eeb1f62b586a
+guid: 147356cd6f0df884c8103acfb1f33e8d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1938247547173245055
-    second: bg_junglejim_0
+      213: -8614872605028595759
+    second: bg_junglejim_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_junglejim_0
+      name: bg_junglejim_2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 3000
-        height: 1080
+        height: 584
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f709808ffd906ea10800000000000000
-      internalID: 1938247547173245055
+      spriteID: 1d7c6006203d17880800000000000000
+      internalID: -8614872605028595759
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_junglejim_0: 1938247547173245055
+      bg_junglejim_2_0: -8614872605028595759
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

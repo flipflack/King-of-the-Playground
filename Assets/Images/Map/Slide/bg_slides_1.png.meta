@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: aaf700336c5eb2949bf3378aae6a8c04
+guid: a07678d8e79b0ae41bfce748b94d6f2a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8675816691190059617
-    second: bg_junglejim_1_0
+      213: 6245772667095804176
+    second: bg_slides_1_0
+  - first:
+      213: -1855559663393823593
+    second: bg_slides_1_1
+  - first:
+      213: 2627428370312537674
+    second: bg_slides_1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_junglejim_1_0
+      name: bg_slides_1_0
       rect:
         serializedVersion: 2
-        x: 242
-        y: 108
-        width: 2595
-        height: 856
+        x: 0
+        y: 384
+        width: 276
+        height: 554
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 162d9ce6051b66870800000000000000
-      internalID: 8675816691190059617
+      spriteID: 019e61236217da650800000000000000
+      internalID: 6245772667095804176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_slides_1_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 327
+        width: 1075
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7942edb315abf36e0800000000000000
+      internalID: -1855559663393823593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_slides_1_2
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 199
+        width: 1492
+        height: 755
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46234d9e20867420800000000000000
+      internalID: 2627428370312537674
       vertices: []
       indices: 
       edges: []
@@ -161,7 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_junglejim_1_0: 8675816691190059617
+      bg_slides_1_0: 6245772667095804176
+      bg_slides_1_1: -1855559663393823593
+      bg_slides_1_2: 2627428370312537674
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

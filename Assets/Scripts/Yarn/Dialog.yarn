@@ -1,282 +1,217 @@
 ﻿title: loadPhase
 ---
 <<declare $minigame_won = false>>
-<<declare $knows_viviana_name = false>>
 <<declare $knows_james_name = false>>
-<<declare $asked_viviana_james = false>>
-<<declare $knows_grace_name = false>>
-<<declare $grace_following = false>>
-<<declare $knows_daisy_name = false>>
 <<declare $asked_daisy_book = false>>
-<<declare $asked_daisy_james = false>>
-<<declare $knows_kevin_name = false>>
 <<declare $asked_kevin_writing = false>>
-<<declare $asked_kevin_james = false>>
-<<declare $asked_kevin_friends = false>>
-<<declare $daisy_following = false>>
-<<declare $kevin_following = false>>
-<<declare $knows_evan_name = false>>
-<<declare $asked_evan_run = false>>
-<<declare $asked_evan_bars = false>>
-<<declare $asked_evan_james = false>>
-<<declare $evan_following = false>>
-<<declare $knows_daniel_name = false>>
-<<declare $told_daniel_run = false>>
-<<declare $asked_daniel_james = false>>
-<<declare $asked_daniel_money = false>>
-<<declare $daniel_following = false>>
-<<declare $knows_ellie_name = false>>
-<<declare $knows_andy_name = false>>
 ===
+
 title: Viviana_Bully_Start
 ---
-Viviana stands beside the sandbox, cardboard sword in hand, cardboard helmet on top, She fiddles with the sand with her sword
-She notices you walking towards her, she points the sword towards you
-Viviana : State your name!
--> You : I'm Lola.
+*Viviana stands beside the sandbox, cardboard sword in hand, cardboard helmet on top, She fiddles with the sand with her sword*
+*She notices you walking towards her, she points the sword towards you*
+
+Viviana : Who are you!
+
+Lola : Oh um I'm Lola.
 Viviana : Lola? Never heard of you.
--> You : I'm the new kid.
-Viviana : Oh, you're the new kid. 
 Viviana : I’m Viviana, Everyone knows me.
-<<set $knows_viviana_name to true>> 
-Viviana : I’m the fastest in my year
-Viviana : I’m friends with the coolest kid in town too! You’ll never guess who he is
 <<jump Viviana_Bully_Questions>> 
 ===
+
 title: Viviana_Bully_Questions
 ---
--> You : Why do you have that sword? 
-	Viviana : Can’t you tell?
-	Viviana : I’m a knight!
-	*She starts to poke the air rapidly*
-	Viviana : Hah! See that? That's what a true knight would do!s
-===
-title: Viviana_Bully_Marbles
----
-You : Grace said you took her marbles
-Viviana : She's just trying to make you feel bad
-Viviana : Don’t listen to her
-Viviana : I don’t have anything. She's lying.
-You  : Really? Are you sure, cause she said that you took her marbles 
-Viviana : I didn’t take anything, she's lying
-Viviana : A Marble Falls out of her pocket
-You : Is that a marble
-Viviana : No! That's not hers! It’s mine
-You  : So it is hers! 
-You  : She said it was a special kind of marble
-You  : Well you gotta give it back
-Viviana : Ok finee
-Viviana : I guess I do have her marbles
-Viviana : But don't tell her I have them
-You : Ok
--> You : I’m telling her
-    Viviana : WAIT 
-    Viviana : No
-    You  : Then give them back
-    Viviana : Ugh, Fine
-    Viviana : But you have to play a game with me
-    Viviana : And only if you win, you can have them 
--> You : Ok i’m gonna go tell James <<if $knows_james_name and not $asked_viviana_james>> 
-    Viviana : Don’t!
-    Viviana : James is my friend
-    You  : Then give them back
-    Viviana : Ugh, fine
-    Viviana : Just a game, but only if you win
-<<if not $knows_james_name>>
-    Viviana : James says I'm the fastest. So you'll lose.
-    You  : Who's James?
-    Viviana : The boy with a skull shirt
-    <<set $knows_james_name to true>>
-<<endif>>
-<<jump Viviana_Bully_Game>>
-===
-title: Viviana_Bully_Game
----
+-> Lola : Why do you have a sword? 
+    Viviana : Can’t you tell?
+    Viviana : I’m a knight!
+    Viviana : I’m the fastest so I get the sword.
+    *She starts to poke the air rapidly*
+    Viviana : Hah! See that? That's why I’m a knight and you’re not!
+-> Lola : I bet I’m faster than you
+    Viviana : Hah! As if. 
+    Lola: Yeah I am! 
+    Viviana : No you’re not! I bet you’re not even faster than me in Drop Grab
+    Lola : What’s Drop Grab?
+    Viviana : You have to grab before I do? Obviously.
+Viviana: Play it with me right now! I know you’re not faster.
 <<set $minigame_won to false>>
 <<start_minigame MinigameManager "marbles">>
-<<if $minigame_won>>
-    Viviana : One more time.
-    <<set_phase "end">>
-<<else>>
-    Viviana : One more timeee.
-<<endif>>
-<<set $minigame_won to false>>
-<<start_minigame MinigameManager "marbles">>
-<<if $minigame_won>>
-    Viviana : ...fine. You win. Here are the marbles
-    <<set_phase "end">>
-<<else>>
-    Viviana : Ha! Come back when you're better
-<<endif>>
+<<jump Viviana_Bully_MidPoint>>
 ===
+
+title: Viviana_Bully_MidPoint
+---
+<<if $minigame_won>>
+    Viviana : No no no! Again!
+    Lola  : But I won.
+    Viviana : No that's not fair!! Again!
+    Lola  : Fine but you have to give me the bag if I win.
+    Viviana : Ugh you’re so annoying! Fine but you’re not gonna win! 
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "marbles">>
+    <<set_phase "end">>
+<<else>>
+    Viviana : Ha! I knew I was faster!
+    Viviana : Let’s play again! You’re so bad.
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "marbles">>
+<<endif>>
+<<jump Viviana_Bully_End>>
+===
+
 title: Viviana_Bully_End
 ---
-Viviana : Ok you won
-Viviana : What do you want
--> You : tell me more about james
-    Viviana : Ok fine
-    Viviana : To be honest he stood out to me
-    Viviana : Like
-    Viviana : He's so cool
-    Viviana : He was at school basketball tryouts 
-    Viviana : I think he won
-    Viviana : I don’t know
--> You : wait but I wanna play the marbles game with you again
-    Viviana : Okay..
-    Viviana : What happened to giving grace the marbles back
-    You : She let me keep some
+Viviana : Ugh fine you’re not fun.
+Viviana : Just take the dumb marbles I don’t want them anyways.
 ===
+
 title: Grace_Victim_Start
 ---
 Grace : sniffle
--> You : What's wrong? 
-    Grace : *I don’t really know*
-    Grace : sniffle
-    Grace : my marbles..
+-> Lola : Um… Are you okay? 
+    Grace : sniffle… sniffle
+    Grace : no
     *She looks up at you*
-    Grace : Who are you..
-    -> You : I’m Lola, I’m new here
-        Grace : Oh.. Hi
-    -> You : Lola
-        Grace : Oh.. Hi
-Grace : I’m Grace
-Grace : Hi, Lola
-<<set $knows_grace_name to true>> 
-You : What's wrong, why are you crying?
-Grace : It's Viviana..
-You : Who's Viviana? 
-Grace : She's the kid over there.
-Grace : I ask her to give me my marbles back.
+Lola: What happened? Are you crying? 
+Grace: *mumbles* it’s um mu uh
+Lola: What? 
+Grace : My pixie dust 
+Lola : Woah are you a fairy? I love fairies! 
+Lola : Silvermist is my favorite! Who’s yours?
+Grace : I like Fawn. She has all the animals. 
+Lola : Yeah she’s so cool too. Well I can maybe help you find your pixie dust. What does it look like?
+Grace : They’re in a Tinkerbell bag and they’re yellow. Some of them are super special too, they're the blue ones. 
+Grace : But I didn’t lose them. Viviana has them.
 Grace : She keeps saying they got lost.
 Grace : And she can’t do anything because it's disappeared
-Grace : But I keep seeing her holding the marbles that I gave her
-You : How do you know
-Grace : They’re the special ones, blue and swirly
+Grace : But I keep seeing her playing with them! She just keeps hiding them from me.
+Lola : What! That’s so mean. 
 <<jump Grace_Victim_Questions>>
 ===
 
 title: Grace_Victim_Questions
 ---
--> You : A guy took my bunny today, I’m sad too
-    Grace : oh.. Thats mean
-    Grace : I know how that feels
-    <<jump Grace_Victim_Questions>>
--> You : I’ll help you out
-    Grace : Okay.. 
-    Grace : can you ask her about the marbles for me? Please?
-    You : Yes, I’ll get them back for you
--> You : Did you see a boy with brown hair? He wears a green skull shirt too, He took my bunny. <<if not $knows_james_name>>
-    Grace : Brown hair?  A kid with a skull shirt? 
-    Grace : Oh.. I think thats James
-    Grace : He takes stuff, too. Everybody knows him. 
+-> Lola : A boy took my bunny today too
+    Grace : Who was it?
+    Lola : I don’t know him. He had brown hair and a stupid skull shirt. 
+    Grace : Oh hmm… I think that’s James
+    Grace : He takes stuff all the time!! Everyone knows him. 
+    Grace : He calls himself King of the playground. 
+    Lola : Do you know where he is? 
+    Grace : He’s always in that big tower. Hmm I can draw a map for you. 
+    Grace : Just come back and I’ll give it to you.
+    Lola: I can go get your pixie dust! We can trade. 
     <<set $knows_james_name to true>>
-    <<jump Grace_Victim_Questions>>
--> You : Okay. I'll get them back.
-    Grace : Thank you, Lola!
+-> Lola : Maybe I can pretend to play with her and steal them back for you!
+    Grace : Woah you can do that? 
+    Lola : For a fellow fairy! I will find Viviana and get your pixie dust.
+    Grace: Wowowow thank you. I think she’s in the sandbox. 
 ===
+
 title: Grace_Victim_End
 ---
 Grace : Wait, is that..
-You : Yup! I got your marbles back!
+Lola : Yup! I got your pixie dust back!
 Grace : Wowowow! Oh my gosh
 Grace : How did you do that?
-You : I played a game with Viviana.
-Grace : You won a fight with Viviana??!
-Grace : Wowowow!
-Grace : Can we be friends??
-You : Ah.. yeah.. Its nothing
-You : Let's be friends!
-Grace : Okay!
+Lola : I played a game with Viviana.
+Grace : You won? Viviana hates losing.
+Grace : Wowowow! Let’s be fairy friends 
 *Grace hands you a marble*
 Grace : Here! You can keep this one!
-You : Really? 
-Grace : Yeah! It's my favorite marble! I’d say its my lucky marble
-You : Oh wow! Thank you
-*You start walking off*
-You : Alright! I’ll see you then
-Grace : Wait! Where are you going? Can I come with you?
-You : Huh? Sure! I’m just trying to find James
-Grace : Okay! I’ll come with you, lets find this James guy
-<<set $grace_following to true>>
+Lola : Really? 
+Grace : Yeah! It's a powerful blue one! 
+Lola : Wow, it's so cool! Thank you
+<<if $knows_james_name>>
+    Grace: Oh here’s your map! I drew the other parts of the park too. 
+    Grace: Some kids here might help you get to James.
+    Grace: It’s hard to get to his Tower if you don’t get his attention first.
+    Grace: He’s got some dumb guards around. I don’t know why they play with him. They’re mean too. 
+    Grace: The only way to him is from them. Like Viviana. I’m sure she told him. She hates losing. 
+    Lola: Ok got it! Thank you for the map!
+<<else>>
+    Lola: I’m definitely going to need some power if I want to get my bunny back.
+    Grace: Did you get your bunny stolen too?
+    Lola: Yeah at school some stupid boy took him.
+    Grace : Who was it?
+    Lola : I don’t know. He had brown hair and a stupid skull shirt. 
+    Grace : I think that’s James
+    Grace : He takes stuff all the time!! Everyone knows him. 
+    Grace : He calls himself King of the playground. 
+    Lola : Do you know where he is? 
+    Grace : He’s always in that big tower. Hmm I can draw a map for you. 
+    *hands you map*
+    Grace: I drew the other parts of the park too. 
+    Grace: Some kids here might help you get to James.
+    Grace: It’s hard to get to his Tower if you don’t get his attention first.
+    Grace: He’s got some dumb guards around. I don’t know why they play with him. They’re mean too. 
+    Grace: The only way to him is from them. Like Viviana. I’m sure she told him. She hates losing. 
+    Lola: Ok got it! Thank you for the map!
+<<endif>>
 ===
 
-//DAISY SECTION HERE, NEW SECTION
 title: Daisy_Victim_Start
 ---
-*Daisy sits on the ground, a thick big book with a recognizable cover lays open on her lap*
-*Lola notices you staring at her book, you can feel the excitement emitting from her as soon as she notices*
-Daisy : Haii!
-You : Oh hello!
-You : You’re reading Harry Potter?
-Daisy : Yeahh! I love this book.
-Daisy : It has so many big words though.
-You : Yeah I tried to read that book
-You : But I think its better if I just read books like Magic Tree House.
+Lola : Oh hello! Is that Harry Potter?
+Daisy : Yes I love this book. Hermione is my favourite! She’s smart like me.
+Lola : I watched the movie. I liked that they had magic. 
+Lola: Have you read the Magic Tree House books, those are my favorite.
 Daisy : Oh My Gosh, I love that series, it's splendid! 
-You : Yeah!
-Daisy : Wow, you sound so cool, we should be friends!
-Daisy : What do I call you?
--> You : Call me Lola! I’m new to this school
-    Daisy : Oh! A new kid!
--> You : I go by Lola!
-    Daisy : Oh. Hi, Lola.
-Daisy : I'm Daisy!
-<<set $knows_daisy_name to true>>
-Daisy : Do you want to sit next to me?
-You : Sure!
+Daisy : You would love the Harry Potter books then! Trust me they’re so much better than the movies.
+Lola : I tried but I don’t think I’m that good at reading yet. 
+Daisy: Why don’t you sit next to me and we can read it together!
+Daisy: Just tell me if there’s words you don’t know. 
+(Lola sits down next to Daisy)
 *You sit next Daisy, you notice a boy on the swing would keep staring towards your area, but you notice its not directly to you, but rather to Daisy*
-Daisy : Don’t mind him.. I guess
-You : Why? Who is that?
+Lola: Um I think that boy is staring at us.
+Daisy : Don’t mind him.. 
+Lola : Why? Who is that?
 Daisy : That's Kevin, we’re in the same class.
-Daisy : But he always glances at me in class.
+Daisy : He’s always glancing at me in class.
 Daisy : I don’t understand him, really, and he never says anything nice to me either!
-You : Oh.. What does he say to you?
-Daisy : He says i’m terrible at writing! Mrs. Hampton literally tells me I’m the best writer in the class, like is he making stuff up? I don’t get it!
-You : Hes just mean, don’t listen to him.
-Daisy : Ugh, but it annoys me so much..
+Lola : Oh.. What does he say to you?
+Daisy : He says I'm terrible at writing! Mrs. Hampton literally tells me I’m the best writer in the class, like is he making stuff up? I don’t get it!
+Lola : He's just mean, don’t listen to him.
+Daisy : Ugh, it annoys me so much..
 <<jump Daisy_Victim_Questions>> 
 ===
 
 title: Daisy_Victim_Questions
 ---
--> You : What Part of the book is your favorite? <<if not $asked_daisy_book>>
+-> Lola : What part of the book is your favorite? <<if not $asked_daisy_book>>
     <<set $asked_daisy_book to true>>
-    Daisy : When Harry Potter leaves his muggle aunts and aunties
-    Daisy : They were literally stopping him
-    Daisy : I don’t know.. Reading that part felt so satisfying
-    Daisy : Like, you can’t stop him anymore haha
-    You : Yeah I remember reading that part, it was satisfying
-    Daisy : Right?!
+    Daisy : When Hermione saves Harry and Ron from the Devil’s Snare! 
+    Daisy : They would’ve been so dead if it weren’t for her smart thinking. 
+    Lola : Yeah I remember watching that part, it was satisfying.
+    Daisy : Right! She’s always helping get out of trouble.
     <<jump Daisy_Victim_Questions>> 
--> You : Do you know James? <<if $knows_james_name and not $asked_daisy_james>>
-    <<set $asked_daisy_james to true>>
-    Daisy : James?
-    Daisy : He's very... distinguished.
-    You : uh.. What does that mean?
-    Daisy : I don’t know, like unique, different I guess?
-    Daisy : He stands out
-    <<jump Daisy_Victim_Questions>>
--> You : Do you want me to talk to Kevin?
+-> Lola : Do you want me to talk to Kevin?
     Daisy : Sure? I mean if you want yeah
     Daisy : I want to know why he's treating me this way
     Daisy : But I don’t know if I could ask
-    You : Okay. I'll ask.
+    Lola : Okay. I'll ask.
     Daisy : Thanks, Lola!
 ===
 
 title: Daisy_Victim_End
 ---
+<<if $minigame_won>>
+    <<jump Daisy_Victim_End_Won>>
+<<else>>
+    <<jump Daisy_Victim_End_Lost>>
+<<endif>>
+===
+
+title: Daisy_Victim_End_Won
+---
 *You and Kevin walk towards Lola, she looks up from reading her book*
-You : Hey Daisy, Kevin has something for you
+Lola : Hey Daisy, Kevin has something for you
 *Daisy glances at you, then glances at Kevin*
 Kevin : Uh… hey..
 Daisy : Hi.. Kevin..?
 *He holds out his paper and hands it towards Daisy, his face flushed red*
 Daisy : “You are splendid!”
-Daisy : Splendid means good.. Right?
-Kevin : Yeah.. I think so..
 Daisy : Aw! Thank you Kevin!
-Kevin : Yayy
 Kevin : Sorry for being mean to you
 Daisy : It's okay
 Daisy : Sorry, I told Lola you weren’t a nice person
@@ -286,529 +221,603 @@ Kevin : Oh.. I think its okay, too many big words
 Daisy : That's ok! I can read it to you
 Kevin : Okay..
 *Kevin sits next to Daisy. Daisy reads aloud towards Kevin*
-Daisy : Lola, you can come too!
-Lola : Okayy
-<<set $daisy_following to true>>
-<<set $kevin_following to true>>
+===
+
+title: Daisy_Victim_End_Lost
+---
+Daisy: Oh hey how’d that go? Isn’t he just unbearable?
+Lola: I think he likes you.
+Daisy: Haha yeah right. Kevin? Ew. 
 ===
 
 title: Kevin_Bully_Start
 ---
 *Kevin notices you approaching him by the swing, he scrambles to open his book and stares at it as you come his way*
 Kevin : *Ahem*
-Kevin : I saw you talking with Daisy earlier.
-You : You saw?
-Kevin : Ya.. I’m kinda sitting here anyway.
-Kevin : She's right in front of me. I have nothing else to do.
-You : Why are you looking at her?
+Lola: Hey what are you doing? Why are you staring at Daisy?
+Kevin : What no it not! I’m just sitting.
+Kevin : She's right in front of me anyway. I have nothing else to do.
+Lola : But like why are you looking at her?
 Kevin : Uhmm.
 Kevin : I don’t know?
-Kevin : She's right in front of me..
-You : Technically you can move..
-Kevin : No..?
-You : How about playing some games with friends..
+Kevin : She's right in front of me like I said..
+Lola : You can move, you know..
 Kevin : umm..
 Kevin : mm
-You : ??
-Kevin : Do you wanna talk to Daisy for me or something
-Kevin : What did she tell you about me
-You : Kevin.. I don’t know.. 
-Kevin : How do you know my name? Did Daisy tell you or something? 
-You : Yeah she told me your name, I’m Lola
-<<set $knows_kevin_name to true>> 
+Kevin : Did Daisy say anything about me? You guys were talking about me right?
+Lola : Kevin.. I don’t know.. 
+Kevin : How do you know my name? It was Daisy who told you right? I knew she was talking about me.
+Lola : Yeah she told me your name, I’m Lola.
 Kevin : Oh okay
 Kevin : uhhmm
-Kevin : I don't know
-Kevin : I’m just tired
-Kevin : I just wanna sit
-Kevin : And read my book I guess
+Kevin : I'm just sitting here reading my book. 
+Kevin : Yup I am just reading. Reading so much… not doing anything else.
 <<jump Kevin_Bully_Questions>> 
 ===
 
 title: Kevin_Bully_Questions
 ---
--> You : So what were you reading? <<if not $asked_kevin_writing>>
+-> Lola : So what were you reading? <<if not $asked_kevin_writing>>
     <<set $asked_kevin_writing to true>>
-    Kevin : A story
-    Kevin : “The fighters of Pomoland”
-    You : Aw
-    Kevin : I like this book
-    Kevin : But it's people say its childish for my age
-    Kevin : Everyone is already at a reading level of 7, I’m at 2, for my grade it's bad, but reading those older bigger kid books is so frustrating, why are there so many big words?
-    You : I think just practicing reading should be fine
-    Kevin : I guess..
-    <<jump Kevin_Bully_Questions>>
--> You : So.. do you know James? <<if not $asked_kevin_james>>
-    <<set $asked_kevin_james to true>>
-    Kevin : James! He has a Ben 10 Watch!
-    Kevin : Its so cool and it lights up too
-    <<jump Kevin_Bully_Questions>>
--> You : So.. why don’t you play with your friends? <<if not $asked_kevin_friends>>
-    <<set $asked_kevin_friends to true>>
-    Kevin : Um..
-    Kevin : Hm..
-    Kevin : I mean I can’t really 
-    <<jump Kevin_Bully_Questions>>
--> You : Okay, I know you can read but lets do a writing challenge!
-    Kevin : A writing challenge?
-    Kevin : You’re on!
-    Kevin : I’m gonna win
+    Kevin : A story…
+    Kevin : Pete the Cat.
+    Lola : Aw cute.
+    Kevin : What! Not cute, it's a book and it’s not kiddy for my age!
+    Kevin : Everyone is already at a reading level of J, I’m not, but reading those older kid books is so annoying, what's with all the words?
+    Lola : Yeah big words are hard. I’m not that good too. 
+    Lola: Can I try to help you? Daisy was helping me read Harry Potter with her.
+    Kevin: D-daisy? Of course she would help you. She's nice to everyone.
+    Lola: You know I’m sure Daisy could help you too.
+    Kevin: No way! That’s too embarrassing. You help me.
+    <<set $minigame_won to false>>
     <<start_minigame MinigameManager "words">>
+-> Lola : Do you know James?
+    Kevin : Yeah we’re friends. He helps me all the time.
+    Lola : Really how?
+    Kevin : He said if you’re mean you get attention. 
+    Kevin : He does it all the time so his parents have to pay attention to him.
+    Lola: Oh. Um, does that work?
+    Kevin: Yeah if I’m mean enough Daisy talks to me. 
+    Lola: You know she would talk to you more if you’re nice. 
+    Lola: She was talking to me about her book. Maybe you can ask her about it too.
+    Kevin: No I’m not good at reading.
+    Lola: You know I’m sure Daisy could help you.
+    Kevin: No way! That’s too embarrassing. You help me. Then maybe I’ll ask her. 
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "words">>
+-> Lola : Why are you mean to Daisy? 
+    Kevin: Cause being mean gets attention duh?
+    Lola: Huh? Who told you that?
+    Kevin: James did. He said if you’re mean you get attention. 
+    Kevin : He does it all the time so his parents have to pay attention to him.
+    Lola: Oh. Well I don’t think it’s working on Daisy. She doesn’t like you.
+    Kevin: What! Did she say that to you? 
+    Kevin: I mean I don’t care. It’s not like I like-like her or anything. 
+    Lola: Sure you don't. You know she loves reading. Maybe you could write her something to get her attention?
+    Kevin: Fine but you have to help me write it.
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "words">>
+<<jump Kevin_Bully_Midpoint>>
 ===
 
 title: Kevin_Bully_Midpoint
 ---
+<<if $minigame_won>>
+    <<jump Kevin_Bully_Midpoint_Won>>
+<<else>>
+    <<jump Kevin_Bully_Midpoint_Lost>>
+<<endif>>
+===
+
+title: Kevin_Bully_Midpoint_Won
+---
+Kevin: Did that word just make sense! How did you do that?
+Kevin: That was so cool.
+Kevin: Again! Again!
+<<set $minigame_won to false>>
+<<start_minigame MinigameManager "words2">>
+<<jump Kevin_Bully_End>>
+===
+
+title: Kevin_Bully_Midpoint_Lost
+---
 Kevin : Uhhhhhhhmm..
 Kevin : A... C... T...
 Kevin : Taac?
-You : Close, its spelled C A t
 Kevin : This game is broken!
 Kevin : The letters are wrong!
-You : They're just mixed up.
-You : Try the first letter first.
-Kevin : ...I can't read when they're mixed up.
-Kevin : *Sigh*
-You : Why do you care what Daisy thinks?
-Kevin : Uhhhhhhhh.
-Kevin : And she has a big book.
-You : You like her?
-Kevin : NO!?
-You : What if you were just nicer to her?
-Kevin : Nicer?
-Kevin : James says if you're nice, nobody remembers you.
-You : But Daisy thinks you hate her..
-Kevin : I do like her!
-You : Then say that..
-Kevin : ...Can you help me with the game first?
-You : Okay. Look at the first letter first.
-<<start_minigame MinigameManager "words">>
+Kevin: I can’t do it. Daisy is never going to like me.
+Lola : They're just mixed up.
+Lola : Try the first letter again.
+<<set $minigame_won to false>>
+<<start_minigame MinigameManager "words2">>
+<<jump Kevin_Bully_End>>
 ===
 
 title: Kevin_Bully_End
 ---
+<<if $minigame_won>>
+    <<jump Kevin_Bully_End_Won>>
+<<else>>
+    <<jump Kevin_Bully_End_Lost>>
+<<endif>>
+===
+
+title: Kevin_Bully_End_Won
+---
 Kevin : WOAH! 
 Kevin : I DID IT! 
-Kevin : I WROTE IT!
-You : You did! 
+Kevin : I READ IT!
+Lola : You did! 
 Kevin : Wait! I’m the best..
-You : Now, if you want to talk to Daisy..
-You : You should at least write something nice for her
+Lola : You should write something for Daisy.
 Kevin : Like what?
-You : What do you like about her?
+Lola : What do you like about her?
 Kevin : She has a big book.
 Kevin : She says "splendid."
-You : Write that.
+Lola : Write that.
 *Kevin writes slowly. He holds up the paper.*
-Kevin : "You are splendid."
-You : Almost. It's "You ARE splendid."
-Kevin : That's what I said.
-You : ...Yeah. Okay.
+Kevin : "You are splindit."
+Lola : Almost. It's "You are  s p l e n d i d “
+Kevin : Oh.
+Lola : It’s okay almost there.
 Kevin : Will you give it to her?
--> You : You should give it to her.
-    Kevin : Uhhhhhhh. I'm scared.
-    You : I'll walk with you.
--> You : Okay.
-    Kevin : Thanks, Lola.
+Lola: You should give it to her.
+Kevin : Ummm. I'm nervous.
+Lola : I'll walk with you.
+===
+
+title: Kevin_Bully_End_Lost
+---
+Kevin: This is stupid. What’s the point?
+Kevin: Being mean works you don’t know stupid.
+Kevin: James was right, be nice gets you nowhere. 
 ===
 
 title: Andy_Victim_Start
 ---
 *Andy sits on the ground, the grass surrounding him, his gaze seemingly stares off into space. You notice him holding a lollipop stick, the plastic still stuck to the candy, and a frog book is open in front of him*
-*You  bump into him*
-Andy : Oof!
-You : Oh! Sorry. I didn’t see you
-You : Why are you sitting on the ground?
-Andy : I’m just sad.
-Andy : Why are you asking? Who are you?
--> You : I'm Lola. I'm new.
-    Andy : Ohhh, thats why I don’t recognize your face.
-    Andy : To be fair I don’t really recognize anyone else's face.
--> You : Lola.
-    Andy : Ohh, nice name.
-Andy : I’m Andy!
-Andy : Hi Lola!
-<<set $knows_andy_name to true>> 
-You : So, why are you sad Andy?
-Andy : It's Diana.
-You :  Who's Diana?
-Andy : The girl sitting on the slide..
-Andy : She's really loud, I don’t get it, sometimes her screams hurt my ears, I’m not even near her..
-Andy : But she's so outgoing, she can talk to so many people, I wish I could be like that..
-Andy : *mumbles*
-Andy : And she keeps yelling and points at me.
-Andy : *mumbles*
-You : Hey.. Um..I don’t think that's a bad thing.
-You : Isn’t a nerd just basically someone who is.. Really smart?
-Andy : Well she doesn’t think that.
-Andy : She runs away every time I go up to her.
-Andy : And just screams..
-Andy : Nerrrrrrrrd!
-Andy : I only talked to her once.
-Andy : When I saw her trying to do math, I went behind her and and told her the answers.
-You : Is she good at math?
-Andy : I don’t know
-Andy : Maybe I shouldn’t have done that
--> You :  I don’t think you should have done that
-    Andy : Fudge.
-    You : Fudge?
-    Andy : Why did I do that?
-    You : It's okay..
-    You : She was probably trying to figure out the thing she was doing.
-    You : Was it hard?
-    Andy : I mean, it didn’t look hard?
-    You : Maybe it was hard for her..
-    Andy : …Maybe.
-    Andy : I should go say sorry then.
--> You : Why did you tell her the answers
-    Andy : I don’t know.
-    You : Was it hard?
-    Andy : It didn’t look hard.
-    You : Maybe it was hard for her.
-    Andy : Maybe..
-    Andy : I should go say sorry then.
-You : its ok
-<<jump Andy_Victim_Questions>> 
-===
-
-title: Andy_Victim_Questions
----
-Andy : Can you talk to her for me
-You : Now you know the problem, why don’t you go up to her yourself
-Andy : I’m a little scared
-You : Okayy
-
+Lola : Hi, what are you reading?
+Andy : I’m reading about frogs! They’re so cool! Did you know there’s poisonous ones? I wish I was poisonous!
+Lola: Why do you want to be poisonous?
+Andy: So that I could make Diana finally shut up.
+Andy : She's really loud, I don’t like it. Her screams hurt my ears and I’m not even near her.
+Andy : She’s always playing with the other kids. It’s not fair.
+Lola: Why’s that not fair? Don’t you play with other kids?
+Andy: I try playing with her. But she just screams “Nerrrrrrrrd!”
+Lola: Well are you a nerd? 
+Andy : I saw her trying to do math, I went behind her and and told her the answers. But that doesn’t make me a nerd!
+Lola : Is she good at math?
+Andy : No, that's why I was trying to help her. But now she just calls me a nerd and it’s so annoying.
+-> Lola :  I don’t think you should have done that
+    Andy : Fudge. Really? Dang it, why did I do that?
+    Lola : It's ok.. she was probably just upset that you called her dumb. 
+    Andy: What! I didn’t say that to her.
+    Lola: Well yeah you told her the answer. That’s basically calling her dumb.
+Andy : Can you talk to Diana with me? I wasn’t trying to say she was dumb.
+Andy : But I don’t think she’ll listen to me and I don’t want to hear her say nerd again.
+Lola: I’ll go with you. But let me talk to her first.
 ===
 
 title: Andy_Victim_End
 ---
-You : I managed to talk to Diana
-Andy : hmm
-You : What
-Andy : okay
-You : Do you want to do anything
+<<if $minigame_won>>
+    <<jump Andy_Victim_End_Won>>
+<<else>>
+    <<jump Andy_Victim_End_Lost>>
+<<endif>>
+===
+
+title: Andy_Victim_End_Won
+---
+Andy: Thank you for helping me talk to her. 
+Andy: I thought she was so mean but turns out she’s pretty nice. 
+===
+
+title: Andy_Victim_End_Lost
+---
+Andy: Thanks for trying to help…
+Andy: Hopefully she won’t hate me more now.
 ===
 
 title: Diana_Bully_Start
 ---
-Diana : This is filler dialog
-<<start_minigame MinigameManager "counting">>
+Diana : Hi! I like your hair. Do you want to play with me?
+Lola : Hi! Sure I’ll play with you.
+Diana: What’s your name? I’m Diana! Let’s go play on the slide.
+Lola: I’m Lola! And I like your hair too. 
+-> Lola : Do you know Andy?
+    Diana: Yeah I know him. He’s a nerrrrrd. 
+    Lola: Why’d you call him a nerd? 
+    Diana: Cause he is one. He’s so smart. I wish I was that smart.
+    Lola: You know he could help you be smart. I can help you too!
+    Diana: No Andy doesn’t like me. He runs away every time I talk to him.
+    Lola: It’s probably cause you call him a nerd.
+    Andy: Um hi Diana…
+    Diana: Hi nerrrrrd. Oh shoot um… Not nerd? 
+    Andy: Don’t call me that I don’t like it. 
+    Diana: Is nerd bad? Don’t you want to be smart? I don’t get it.
+    Andy: When you say it, it’s mean! Stop!
+    Andy: If I help you will you just stop calling me that. 
+    Lola: Yeah we can help you! But you have to promise to stop calling Andy a nerd. 
+    Diana: Ok fine make me smart. Help me with this question. 
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "counting">>
+-> Lola : I heard you call Andy a nerd.
+    Diana: Well yeah he is one. He’s always reading and knows all the answers.
+    Lola: Do you not like Andy? 
+    Diana: I like Andy. Wait not like, like-like him. He’s just a nerd. I wish I was a nerd. 
+    Lola: Wait, you wish you were a nerd?
+    Diana: Yeah I’m not good at math. I want to be smart like him cause he’s a nerrrrrd.
+    Andy: Um hi Diana…
+    Diana: Hi nerrrrrrrrd!
+    Lola: Stop calling him that! He doesn’t like it. 
+    Diana: Is nerd bad? Don’t you want to be smart? I don’t get it.
+    Andy: When you say it, it’s mean! Stop!
+    Andy: If I help you will you just stop calling me that. 
+    Lola: Yeah we can help you! But you have to promise to stop calling Andy a nerd. 
+    Diana: Ok fine make me smart. Help me with this question. 
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "counting">>
+<<jump Diana_Bully_Midpoint>>
 ===
 
 title: Diana_Bully_Midpoint
 ---
-Diana : This is filler dialog
+<<if $minigame_won>>
+    <<jump Diana_Bully_Midpoint_Won>>
+<<else>>
+    <<jump Diana_Bully_Midpoint_Lost>>
+<<endif>>
+===
+
+title: Diana_Bully_Midpoint_Won
+---
+Diana : Woahhhhhh
+Diana : So that's how you do it
+Andy: Yeah! Easy right.
+Diana: Does this make me a nerd now?
+Diana: Another one! Another one! I want to be even smarter.
+<<set $minigame_won to false>>
 <<start_minigame MinigameManager "counting">>
+<<jump Diana_Bully_End>>
+===
+
+title: Diana_Bully_Midpoint_Lost
+---
+Diana: Ughhhh!! This is too hard I’m never going to be smart like you
+Diana: It’s pointless I’ll never be a nerd. 
+Lola: It’s ok! Come on, let's try one more time. 
+Andy: Yeah don’t give up! 
+<<set $minigame_won to false>>
+<<start_minigame MinigameManager "counting">>
+<<jump Diana_Bully_End>>
 ===
 
 title: Diana_Bully_End
 ---
-Diana : This is filler dialog
+<<if $minigame_won>>
+    <<jump Diana_Bully_End_Won>>
+<<else>>
+    <<jump Diana_Bully_End_Lost>>
+<<endif>>
+===
+
+title: Diana_Bully_End_Won
+---
+Diana: Yes! Yes! Yes! I get it now! I get it!
+Diana: Wow you guys are so smart. Thank you!
+Lola : Where did you even learn the word nerd anyways? 
+Diana: My brother Evan and his friend James say it allllll the time!
+Diana: They’re always playing on the Xbox and always yelling nerrrrrds.
+Diana: I asked my mom what it meant and she said it was someone who’s really smart. 
+Andy: Well she’s right but it’s also mean to say.
+Diana: Ohhhh I’m sorry Andy I didn’t know. I’ll stop calling you that. But promise to keep helping me with math!
+Andy: If you keep your promise then yeah!
+Diana: I should tell Evan and James too! Nerds are good not bad.
+===
+
+title: Diana_Bully_End_Lost
+---
+Diana: I don’t get it!!!! I can’t do it!
+Diana: Just leave me alone. I’ll never be smart.
+*get kicked out of dialogue, diana is sad and won’t talk to you*
 ===
 
 title: Evan_Victim_Start
 ---
-*Evan sits alone by the Monkey Bars, He stares at the ground*
-You : Hey!
-*Evan looks up at you for a second, then he looks away*
-You : Wanna be friends?
-*He shakes his head*
-You : Are you James' friend?
-*His eyes widens but he also shakes his head*
-You : Um.. can I sit here?
-*He shrugs, you sit down but not too close to him*
--> You : I'm Lola. I'm new to the town..
-    *Evan peeks at her.*
--> You : My name is Lola.
-    *Evan peeks at her.*
-You : What's your name?
-*Silence fills the air for what feels like forever* 
-You : So…
-Evan : …Evan..
-You : Oh! Hi Evan
-<<set $knows_evan_name to true>> 
-Evan : Hi.. Lola..
-*A audible stomach growl, it came from Evan*
-You : Did something happen?
-*Evan nods*
-Evan : Yeah.. 
-You : Did someone bully you? Was it James?
-Evan : Someone took my lunch money
-You : Your lunch money? Who would do that?
-Evan : Daniel.. He takes them everyday..
-Evan : I’m hungry all the time
-You : Thats evil..
-Evan : And he keeps saying I suck at everything
-Evan : I really do suck at everything
-<<jump Evan_Victim_Questions>> 
+Lola : Are you okay?
+Evan: owwww
+Lola: Did you just fall off the top of that?
+Evan: owwwwwwww
+Evan: He pushed me
+Lola: HUH? Why would he do that
+Evan: He took my lunch box and I tried to get it back owwwww
+Lola: Um what’s your name?
+Evan: I’m Evan or Wheezie. But please don’t call me that.
+Lola: Who calls you Wheezie? 
+Evan: Most of the school, James started it when I couldn’t stop wheezing after the pacer test.
+Lola: Oh sorry Evan…
+Evan: It’s ok, thanks. 
+<<jump Evan_Victim_Questions>>
 ===
 
 title: Evan_Victim_Questions
 ---
--> You : Do you like to run? <<if not $asked_evan_run>>
-    <<set $asked_evan_run to true>>
-    *Evan's head pops up. It's the first time he looks at you for real.*
-    Evan : Yeah!!
-    Evan : I feel like i’m flying when I run!
-    You: Woah!! Are you fast?
-    Evan : mm...I don't know.
-    Evan : I can run from here to the fence..
-    Evan : When I count, I think it's ten seconds.
-    You : Ten seconds?? Woah! That is really fast!
-    Evan : Really?
-    <<jump Evan_Victim_Questions>>
--> You : Can you do the monkey bars? <<if not $asked_evan_bars>>
-    <<set $asked_evan_bars to true>>
-    *Evan looks at the monkey bars. Then back at his shoes.*
-    Evan : mm.. yeahh..
-    You : Woah..
-    Evan : I can skip two
-    You : You skip TWO?
-    Evan : ...It's not a big deal.. Daniel can do three at once
-    You : What?? Don’t compare yourself to him! 
-    You : I can’t even do one??
-    Evan : ...Really?
-    You : Really.
-    *Evan almost smiles.*
-    <<jump Evan_Victim_Questions>>
--> You : Do you know James? <<if $knows_james_name and not $asked_evan_james>>
-    <<set $asked_evan_james to true>>
-    Evan : The boy with the brown hair?
-    *Evan whispers, even though nobody is close.*
-    Evan : He sits at the top by himself.
-    Lola : By himself?
-    Evan : Lots of kids are near him.
-    Evan : But he's still by himself.
-    <<jump Evan_Victim_Questions>>
--> You : Do you want me to get your tickets back?
-    Evan : You can't..
-    Evan : Daniel's.. Bigger than us, bigger than me
-    You : I'm not scared.
-    -> You : I'll be careful.
-        Evan : Okay.
-    -> You : I'll try anyway.
-        *Evan gives you a doubtful glance* 
-        Evan : ...Okay.
-    Evan : Thank you, Lola.
+-> Ask about Daniel
+    Evan: Oh I forgot you’re new here. Daniel is just another jerk. He finds it funny to steal things because he can. 
+    Evan: He’s always giving our stuff to James. Other jerks do it too but Daniel steals the most. 
+    Evan: That's why he and James are best friends. Two jerks in a jerky sandwich. 
+-> Ask about lunch box
+    Evan: It’s my limited edition Ninja Turtles lunch box. Dad said it was the last one left and I couldn’t lose it this time.
+    Lola: This time? How many times have you lost your lunch box?
+    Evan: Well I had Spiderman, then Transformers, then Scooby Doo. 
+    Lola: What happened to them?
+    Evan: Daniel, Kevin, and Viviana. I guess Daniel wanted an extra point….
+-> Ask about James
+    Lola: Is James mean to everyone? He stole my bunny in school today.
+    Evan: Yeah he’s the biggest jerk. Was your bunny a limited edition item too? My lunch box was.
+    Lola: It was from my mom. From before she was gone. (lola looks away sad)
+    Evan: Oh sorry. Then you have to get it back! Talk to Daniel, he’s mean but he will get you closer to James. 
 ===
 
 title: Evan_Victim_End
 ---
-You : Evan! I got your money
-*Surprised, he turns and looks up, to the money and then to you*
-Evan : You did? Really? What?
-Evan : How?
-You : I beat Daniel at Arm Wrestling!!
-Evan : Him?? You beat Daniel?? 
-You : Yeah!
-*Evan almost laughs. It comes out as a tiny snort.*
-Evan : Thank you, Lola
-*Daniel walks up with his arms crossed. He keeps his eyes on the ground.*
-*Evan freezes*
-Daniel : Hey.
-Daniel : I'm... sorry I took your lunch money..
-Evan : ...Okay.
-*Evan's stomach growls again, loudly.*
-*Daniel digs into his bag and holds out the chips.*
-Daniel : Here.
-Daniel : They were yours anyway.
-Evan : ...Thanks.
-Daniel : And you don't suck at everything.
-Daniel : You run really fast and you can do monkey bars really well
-Daniel : That's... kinda cool.
-Daniel : I mean... whatever.
-Evan : ...Really?
-You : Really.
-*Evan almost smiles. This time he really smiles.*
-Evan : Do you want to see me do it?
-Daniel : Fine. But only once.
-*Evan runs to the monkey bars. He skips two and drops off the end in no time.*
-Daniel : ...Whoa.
-Evan : Do you want to try?
-Daniel : Nah. I'd fall.
-Evan : I can show you.
-Daniel : ...Maybe later.
-Evan : Lola?
-Evan : Can I come with you?
-You : Of course.
-<<set $evan_following to true>>
-*Daniel watches them go. He puts his hands in his pockets.*
-Daniel : I'm not on your side.
-You : I know.
-Daniel : ...But I'm not on his side today.
+<<if $minigame_won>>
+    <<jump Evan_Victim_End_Won>>
+<<else>>
+    <<jump Evan_Victim_End_Lost>>
+<<endif>>
+===
+
+title: Evan_Victim_End_Won
+---
+Evan: No way! You got my lunch box back! How?
+Lola: Easy, I beat Daniel in an arm wrestle.
+Evan: An arm wrestle?? Woah you must be crazy strong. 
+Evan: I bet you could beat up James too. 
+Lola: Thanks Evan.
+===
+
+title: Evan_Victim_End_Lost
+---
+Lola: Sorry Evan I couldn’t get your lunch box back. 
+Evan: It’s okay I’ll just ask my dad for a new one.
+Evan: I heard there's a new Pokemon one I really wanted anyways.
+Evan: Thanks for trying I guess. 
 ===
 
 title: Daniel_Bully_Start
 ---
-*Daniel leans against the fence with his arms crossed. His face smug*
-Daniel : Hey
-You : Hi..
-Daniel : You’re that new kid right?
--> You : I'm Lola. I'm new to the town.
-    Daniel : Lola. Cool name.
-    Daniel : I mean... whatever.
--> You : My name is Lola.
-    Daniel : Lola. Cool name.
-    Daniel : I mean... whatever.
-Daniel : I’m Daniel
-<<set $knows_daniel_name to true>>
-Daniel : Im quite popular around this area
-Daniel : Not as popular as James though
-You : I don’t care about that
-You : I'm here for Evan's lunch money
-Daniel : Oh…
-Daniel : Sorry, I used them up for snacks
-You : They're Evan's.
-Daniel : Hahaha..Finders keepers.
-You : you didn't find them? You took them, there's a difference
-Daniel : Same thing same thing
-Daniel : Can’t Evan come up to me himself?
-Daniel : This is what I mean when I say he sucks at everything
-You : He doesn't suck at everything.
-Daniel : Oh yeah? What's he good at?
+Daniel: You’re that new kid right? I heard you talked to my sister. 
+Daniel: What do you want? To tell me to play nice? Lammme. Maybe I’ll call you Lamey. 
+Lola: My name is Lola not Lamey. 
+Daniel: Ok Lamey what do you want? 
 <<jump Daniel_Bully_Questions>>
 ===
 
 title: Daniel_Bully_Questions
 ---
--> You : He runs really fast... <<if not $told_daniel_run>>
-    <<set $told_daniel_run to true>>
-    Daniel : Bro.. running is easy
-    You : Really? He can run from here to the fence in ten seconds
-    *Daniel stops chewing.*
-    Daniel : Hah.. ten seconds?
-    Daniel : He counted that?
-    You : Yeah.
-    Daniel : Hah.. thats lame
-    <<jump Daniel_Bully_Questions>>
--> You : Do you know James? <<if $knows_james_name and not $asked_daniel_james>>
-    <<set $asked_daniel_james to true>>
-    Daniel : James is my best friend!
-    Daniel : His teacher always calls his home.
-    Daniel : He gets yelled at by his mom a lot though…
-    Daniel : But that's why he's so tough!
-    You : He's tough because he gets yelled at by his mom? 
-    Daniel : Yeah!
-    <<jump Daniel_Bully_Questions>>
--> You : Why do you take Evan’s lunch money? <<if not $asked_daniel_money>>
-    <<set $asked_daniel_money to true>>
-    Daniel : I buy snacks with it
-    Daniel : Duhh
-    You : Evan's hungry all the time because of you
-    Daniel : So? That's his problem
-    *Daniel looks away.*
-    Daniel : Sometimes I give snacks to James too
-    Daniel : That's what a good friend would do
-    <<jump Daniel_Bully_Questions>>
--> You : Wanna make a bet
-    Daniel : What bet?
-    You : Arm wrestling. If I win you stop taking Evans money
-    Daniel : Huh? Are you for real?
-    Daniel : I’m a guy and you’re a girl.
-    Daniel : Do you really want to fight?
-    You : If I win, you give the money back.
-    Daniel : And if I win?
-    You : Then I'll leave you alone.
-    Daniel : Deal..
+-> Lola : Take me to James
+    Daniel: Why can you cry like a baby for your stuffie?
+    Lola: Shut up! I’m not a baby. 
+    Daniel: That’s what a baby would say. Cry baby haha. 
+    Daniel: Even if I take you to him you’d just cry your way home. 
+    Lola: Not true! You’re a cry baby!
+    Daniel: Me? HA! Yeah right I bet I could beat you in an arm wrestle right now and you’d cry. 
+    Lola: Bring it! And if you lose you have to give me back Evan’s lunch box.
+    Daniel: Deal!
+    <<set $minigame_won to false>>
     <<start_minigame MinigameManager "arm">>
+-> Lola : Give me back Evan’s lunch box
+    Daniel: Evan? You mean Wheezie? HA! Did he send you up here cause he couldn’t climb up himself.
+    Lola: You pushed him! 
+    Daniel: No I didn’t. He pushed himself, it’s Wheezie.
+    Lola: Well you have to give it back!
+    Daniel: Says who? Wanna bet?
+    Lola: If I beat you in an arm wrestle then you have to give his lunch box back.
+    Daniel: Oh you’re on, heck yeah. You’re going down cry baby. 
+    <<set $minigame_won to false>>
+    <<start_minigame MinigameManager "arm">>
+<<jump Daniel_Bully_Midpoint>>
 ===
 
 title: Daniel_Bully_Midpoint
 ---
+<<if $minigame_won>>
+    <<jump Daniel_Bully_Midpoint_Won>>
+<<else>>
+    <<jump Daniel_Bully_Midpoint_Lost>>
+<<endif>>
+===
+
+title: Daniel_Bully_Midpoint_Won
+---
 Daniel : What?! 
-Daniel : Bro, you just got lucky
-You : Oh hey I won
-Daniel : Hold on, best of two
-You : You’re.. Breathing really hard, just say you lost
-Daniel : I'm NOT.
-You : Can I ask you something then while you take a break
-Daniel : Ugh. What do you want
-You : Why do you say Evan sucks at everything?
-Daniel : Because he does..
-You : Does he?
-Daniel : ...Okay, the monkey bars.
-Daniel : I can skip three bars.
-Daniel : But I fall off every time.
-Daniel : Evan skips two, and he goes all the way across super fast.
-Daniel : And he never falls.
-Daniel : It's so annoying.
-You : That sounds really good.
-Daniel : ...
-Daniel : It's kind of cool.
-Daniel : Don't say anything.
-You : Why not?
-Daniel : If James hears me, he'll look at me weird.
-You : Weird how?
-Daniel : Like I'm not cool anymore.
-You : Is that scary?
-Daniel : ...A little.
-Daniel : Okay, last round.
-Daniel : And I'm not holding back this time.
-<<start_minigame MinigameManager "arm">>
+Daniel: How the heck did you beat me! 
+Daniel: Hold on, best of two! You got lucky.
+Lola : You’re breathing really hard, just say you lost to a girl.
+Daniel : NO I DIDN’T! It’s out of two!
+<<set $minigame_won to false>>
+<<start_minigame MinigameManager "armwrestle">>
+<<jump Daniel_Bully_End>>
+===
+
+title: Daniel_Bully_Midpoint_Lost
+---
+Daniel: HA! You’re even wimpier than Wheezie is. Wimp and Wheeze hahaha.
+Lola: Shut up! You barely even won. 
+Daniel: Oh yeah? Let’s go again, it’s fun seeing how wimpy you are.
+<<set $minigame_won to false>>
+<<start_minigame MinigameManager "armwrestle">>
+<<jump Daniel_Bully_End>>
 ===
 
 title: Daniel_Bully_End
 ---
+<<if $minigame_won>>
+    <<jump Daniel_Bully_End_Won>>
+<<else>>
+    <<jump Daniel_Bully_End_Lost>>
+<<endif>>
+===
+
+title: Daniel_Bully_End_Won
+---
 *Daniel looks at the table, defeated*
 Daniel : Huh..
 Daniel : I lost? To a girl?
-You : Yeah you did 
-Daniel : And you’re the new kid too
-You : You were good too though
-You : Don’t beat yourself over it, but don’t take Evan’s lunch money anymore okay?
-Daniel : Ah..
-*He reaches into his pockets, and he reveals the crumbled up dollar bills to you*
-Daniel : Here.. I’ve been saving up  but, these are rightfully Evans.. So..
-You : Thanks!
-You : I think you should say sorry to him..
-Daniel : …
-Daniel : Sure.. *He turns away shy*
-<<set $daniel_following to true>>
+Lola : Yeah you did, now give me the lunch box. 
+Daniel: Ugh whatever take it. I’m telling James. New girl’s another lamer.
+Lola: Yeah tell him you lost to me too! At that he should watch out.
+Daniel: SHUT UP! You couldn’t beat him if you tried. You barely beat me.
 ===
 
-// Plushie Sewing Game (Roundabout)
-// Ellie Interaction Section (1st grade)
+title: Daniel_Bully_End_Lost
+---
+Daniel: HAha! I knew you couldn’t beat me. Go on and cry with Wheezy. Loser. Bleh. (he sticks his tongue out like james did in beginning)
+===
+
 title: Ellie_Victim_Start
 ---
-*Ellie sits on the roundabout, pushing it slowly*
-Ellie : Hi!
-You : What are you doing?
-Ellie : Not much, just playing on this thing..
-Ellie : It’s fun! Do you wanna try?
-You : Yeah sure!
-*You get on the roundabout with Ellie, and play for a little bit*
-You : What's your name?
-Ellie : I’m Elliee!
-<<set $knows_ellie_name to true>> 
--> You : I’m Lola, I’m new to this town!
-    Ellie : Ohh thats why I don’t know your face
-    Ellie : Nice to meet you Lola!
--> You : Name’s Lola!
-Ellie : Wanna be friends
-You : What do you like
-Ellie : Pandas
-Ellie : I had this one Panda plushie
-Ellie : This girl stole it
+*Plushies sit on the roundabout, teapots sit in front, Ellie pushes the roundabout and hums a familiar tune*
+Lola : Is that a tea party?
+Ellie : Oh my gosh, hello! Wanna join my tea party?
+Ellie : Do you have a plushie with you? 
+Ellie : Wanna be friends??
+Lola : Yeah.. I had a plushie, but James stole him from me..
+Ellie : ?!!
+Ellie : That's okay! Do you still want to join my tea party?
+Lola : Oh sure what part are you on?
+Ellie: Lady Sprinkles is having her royal tea party with all of the other princesses but now her knight is here! Here, that’s you!
+*Lola picks up the mouse plushie that Ellie hands her*
+Mouse Knight: Hello my queen! I have returned.
+Lady Sprinkles: Ah my knight! Have you brought back the pastries I requested?
+Mouse Knight: Yes I have here you go! 
+Lady Sprinkles: Mmm yummy. How tasty! Princesses, you must try these cupcakes. 
+Lady Sprinkles: Princess Bear stop looking at my knight! He’s cute but he’s mine!
+Princess Bear: That’s too bad! Because me and the knight are in love!
+Mouse Knight: It’s true! I’m sorry my queen!
+Lady Sprinkles: How dare you betray me! You are not my loyal knight anymore! Leave, both of you!
+*Mouse Knight and Princess Bear are thrown off of the roundabout*
+Ellie: Hahaha! That was so silly. You’re more fun to play with than Sammy.
+Lola: Who’s Sammy?
+Ellie: I don’t know some girl. I gave her my tiger plushie. That one was old and didn’t fit my tea party anyways.
+Ellie: She seemed upset or whatever I don’t know. But she was running the tea party.
+Ellie: You made it fun again. Mouse Knight would totally be in love with Princess Bear. 
+*Ellie goes back to playing in her tea party*
 ===
 
 title: Ellie_Victim_End
 ---
-Ellie : This is filler dialog
+She’s in her own world. You can hear her voice the princesses in a very dramatic fashion.
 ===
 
 title: Sammy_Bully_Start
 ---
-Sammy : This is filler dialog
+*You go up to Sammy, she's trying her best to use the kiddie needles to fix the tiger plushie, but fails with every attempt, you watch Sammy as she goes through the motions before approaching her*
+Lola : Hi! Do you want me to help you with that? My dad told me how to sew.
+*Sammy gives you a questionable confused look, then one that reveals a hint of guilt*
+Sammy : I need to fix this myself! I broke it! It’s almo- Ugh!!
+Lola : I, The Mouse Knight!! Shall fix this plushie for you!
+Lola : Huzzah!~
+Lola : I, The Mouse Knight, have seen many plushies in need of help. It is my duty to fix these plushies!
+Sammy : Um..
+Sammy : I don’t think a Mouse Knight would say “Huzzah”..
+*A quiet chuckle leaves Sammy, but you see her face going back into guilt*  
+Sammy : Ugh.. If I don’t fix this plushie James is going to be so mad.
+Lola: James? Does he want your plushie too? 
+Sammy: Oh um forget I said anything. It’s nothing. 
+Lola : Can I try fixing it for you?
+Sammy : No! If I can’t even fix a plushie myself I suck.
+Lola : My dad says you never suck! You’re just learning. 
+Lola: I can show you. I’m good at sewing now. 
+Sammy : Mm. ok… thank you…
+<<set $minigame_won to false>>
 <<start_minigame MinigameManager "sewing">>
+<<jump Sammy_Bully_Midpoint>>
 ===
-
 
 title: Sammy_Bully_Midpoint
 ---
-Sammy : This is filler dialog
+<<if $minigame_won>>
+    <<jump Sammy_Bully_Midpoint_Won>>
+<<else>>
+    <<jump Sammy_Bully_Midpoint_Lost>>
+<<endif>>
+===
+
+title: Sammy_Bully_Midpoint_Won
+---
+Sammy : Woah it’s fixed. 
+Lola : Yeah it was easy just in, out and across!
+Sammy : Um.. Can you help me sew the arm back too?
+<<set $minigame_won to false>>
 <<start_minigame MinigameManager "sewing">>
+<<jump Sammy_Bully_End>>
+===
+
+title: Sammy_Bully_Midpoint_Lost
+---
+Sammy: There’s no point! We can’t fix it!
+Sammy: He’s going to be so mad. 
+Sammy: …maybe I can ask Ellie for another plushie… ugh no she wouldn’t…
+Lola: Hold on I almost got it just let me try again! 
+<<set $minigame_won to false>>
+<<start_minigame MinigameManager "sewing">>
+<<jump Sammy_Bully_End>>
 ===
 
 title: Sammy_Bully_End
 ---
-Sammy : This is filler dialog
+<<if $minigame_won>>
+    <<jump Sammy_Bully_End_Won>>
+<<else>>
+    <<jump Sammy_Bully_End_Lost>>
+<<endif>>
+===
+
+title: Sammy_Bully_End_Won
+---
+Sammy: Oh my gosh thank you! Thank you! 
+Lola: Because I fixed it you have to answer a question now
+-> Lola: Why does James want the plushie?
+    Sammy: He said I had to give him two things…it was a dumb deal 
+    Sammy: He took my Cloudy from me and wouldn’t give it back. He said if I wanted it I had to prove I wasn’t a baby anymore.
+    Sammy: He told me to steal but maybe I am just a baby. I couldn’t do it, Ellie had to give me a plushie.
+    Sammy: I really do suck. 
+    -> Comfort Sammy
+        Lola: I think you’re really brave! He took my plushie too and said I was a baby.
+        Lola: Does it matter that you didn’t steal it? You still got a plushie that counts!
+        Sammy: I stole the first one…. I took Isabelle’s keychain
+        Sammy: She was so upset and Ms. Mallory had everyone look for it in the classroom.
+        Sammy: I felt so bad. She was crying and everything.
+        Sammy: I put it back on her desk after recess. I found this hairclip in the stairs instead.
+        Sammy: But thanks Lola. At least I have Tiger now too.
+    -> Ask why James steals things
+        Lola: He stole my plushie too! Does he take everyone’s things? Why? That’s so unfair.
+        Sammy: He didn’t always. I used to live next to him. 
+        Sammy: His siblings would take everything from him when we played together. He was the baby and got a lot of stuff from his parents.
+        Sammy: But I think there’s a new baby now. He doesn’t get anything anymore.
+-> Lola: How did the plushie break?
+    Sammy: I was trying to put the tiger in my bag but it got stuck on the zipper and ripped.
+    Sammy: My mom gave me this kit for just in case but I forgot how to use it. 
+    Sammy: Nothing has been going good today! I just want to go home. 
+    -> Comfort Sammy
+        Lola: Hey don’t cry! Look it’s fixed now 
+        Tiger: Hello Sammy! I’m all better now roar roar 
+        Sammy: Thank you Lola… sniffle..
+    -> What do you need the plushie for?
+        Sammy: I made a dumb deal with James. He wants two stolen things if I want my Cloudy back. I had to prove I’m not just a little baby.
+        Sammy: He told me to steal but maybe I am just a baby. I couldn’t do it, Ellie had to give me a plushie.
+        Sammy: I really do suck. 
+        Sammy: But thanks Lola. At least I have Tiger now.
+===
+
+title: Sammy_Bully_End_Lost
+---
+Sammy: Thanks for trying Lola… sniffle..
+Sammy: Maybe James will be fine with a broken stuffie.
+Lola: I have this marble Grace gave me. It’s special and blue. You can have it if you want.
+Sammy: thanks..maybe this will work 
 ===
