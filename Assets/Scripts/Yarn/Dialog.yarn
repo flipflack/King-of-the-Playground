@@ -4,6 +4,14 @@
 <<declare $knows_james_name = false>>
 <<declare $asked_daisy_book = false>>
 <<declare $asked_kevin_writing = false>>
+<<declare $kevin_won = false>>
+<<declare $kevin_done = false>>
+<<declare $diana_won = false>>
+<<declare $diana_done = false>>
+<<declare $daniel_won = false>>
+<<declare $daniel_done = false>>
+<<declare $sammy_won = false>>
+<<declare $sammy_done = false>>
 ===
 
 title: Viviana_Bully_Start
@@ -61,6 +69,8 @@ title: Viviana_Bully_MidPoint
 
 title: Viviana_Bully_End
 ---
+<<set_phase "end">>
+<<set_phase_for "Grace" "end">>
 Viviana : Ugh fine you’re not fun.
 Viviana : Just take the dumb marbles I don’t want them anyways.
 ===
@@ -195,7 +205,7 @@ title: Daisy_Victim_Questions
 
 title: Daisy_Victim_End
 ---
-<<if $minigame_won>>
+<<if $kevin_won>>
     <<jump Daisy_Victim_End_Won>>
 <<else>>
     <<jump Daisy_Victim_End_Lost>>
@@ -336,7 +346,13 @@ Lola : Try the first letter again.
 
 title: Kevin_Bully_End
 ---
-<<if $minigame_won>>
+<<if not $kevin_done>>
+    <<set $kevin_won to $minigame_won>>
+    <<set $kevin_done to true>>
+    <<set_phase "end">>
+    <<set_phase_for "Daisy" "end">>
+<<endif>>
+<<if $kevin_won>>
     <<jump Kevin_Bully_End_Won>>
 <<else>>
     <<jump Kevin_Bully_End_Lost>>
@@ -401,7 +417,7 @@ Lola: I’ll go with you. But let me talk to her first.
 
 title: Andy_Victim_End
 ---
-<<if $minigame_won>>
+<<if $diana_won>>
     <<jump Andy_Victim_End_Won>>
 <<else>>
     <<jump Andy_Victim_End_Lost>>
@@ -496,7 +512,13 @@ Andy: Yeah don’t give up!
 
 title: Diana_Bully_End
 ---
-<<if $minigame_won>>
+<<if not $diana_done>>
+    <<set $diana_won to $minigame_won>>
+    <<set $diana_done to true>>
+    <<set_phase "end">>
+    <<set_phase_for "Andy" "end">>
+<<endif>>
+<<if $diana_won>>
     <<jump Diana_Bully_End_Won>>
 <<else>>
     <<jump Diana_Bully_End_Lost>>
@@ -562,7 +584,7 @@ title: Evan_Victim_Questions
 
 title: Evan_Victim_End
 ---
-<<if $minigame_won>>
+<<if $daniel_won>>
     <<jump Evan_Victim_End_Won>>
 <<else>>
     <<jump Evan_Victim_End_Lost>>
@@ -654,7 +676,13 @@ Daniel: Oh yeah? Let’s go again, it’s fun seeing how wimpy you are.
 
 title: Daniel_Bully_End
 ---
-<<if $minigame_won>>
+<<if not $daniel_done>>
+    <<set $daniel_won to $minigame_won>>
+    <<set $daniel_done to true>>
+    <<set_phase "end">>
+    <<set_phase_for "Evan" "end">>
+<<endif>>
+<<if $daniel_won>>
     <<jump Daniel_Bully_End_Won>>
 <<else>>
     <<jump Daniel_Bully_End_Lost>>
@@ -769,7 +797,13 @@ Lola: Hold on I almost got it just let me try again!
 
 title: Sammy_Bully_End
 ---
-<<if $minigame_won>>
+<<if not $sammy_done>>
+    <<set $sammy_won to $minigame_won>>
+    <<set $sammy_done to true>>
+    <<set_phase "end">>
+    <<set_phase_for "Ellie" "end">>
+<<endif>>
+<<if $sammy_won>>
     <<jump Sammy_Bully_End_Won>>
 <<else>>
     <<jump Sammy_Bully_End_Lost>>

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 using System.Collections;
+using System.Collections.Generic;
 
 //singleton script, persistent
 public class GameManager : MonoBehaviour
@@ -11,6 +12,12 @@ public class GameManager : MonoBehaviour
     public NPC_Data CurrentNPC { get; private set; }
     public string ReturnScene { get; private set; }
     private InMemoryVariableStorage variableStorage;
+
+    // Each NPC's dialogue phase, kept here (not on the ScriptableObject) so it
+    // survives scene changes. Unity can unload and reload a ScriptableObject
+    // between scenes, and NPC_Data.OnEnable resets it back to "start" when that happens.
+    private readonly Dictionary<string, NPC_Data.dialogPhase> npcPhases =
+        new Dictionary<string, NPC_Data.dialogPhase>(System.StringComparer.OrdinalIgnoreCase);
 
     private void Awake()
     {
@@ -85,22 +92,58 @@ public class GameManager : MonoBehaviour
         if (CurrentNPC == null || runner == null) yield break;
 
         runner.onDialogueComplete.AddListener(OnDialogueComplete);
-        runner.StartDialogue(CurrentNPC.GetNodeForPhase());
+        runner.StartDialogue(GetNodeFor(CurrentNPC));
     }
     private void OnDialogueComplete()
     {
         EndConversation();
     }
 
-    // Yarn: <<set_phase "game">>  /  <<set_phase "end">>
+    public NPC_Data.dialogPhase GetPhase(NPC_Data npc)
+    {
+        if (npc == null) return NPC_Data.dialogPhase.start;
+        return npcPhases.TryGetValue(npc.npcName, out var phase) ? phase : NPC_Data.dialogPhase.start;
+    }
+
+    private string GetNodeFor(NPC_Data npc)
+    {
+        NPC_Data.dialogPhase phase = GetPhase(npc);
+        npc.currentPhase = phase;   // keep the Inspector in sync for debugging
+        return phase == NPC_Data.dialogPhase.end && !string.IsNullOrEmpty(npc.endingNode)
+            ? npc.endingNode
+            : npc.startingNode;
+    }
+
+    private void StorePhase(string npcName, string phase)
+    {
+        if (string.IsNullOrEmpty(npcName)) return;
+
+        if (System.Enum.TryParse(phase, true, out NPC_Data.dialogPhase parsed))
+        {
+            npcPhases[npcName] = parsed;
+            if (CurrentNPC != null && string.Equals(CurrentNPC.npcName, npcName, System.StringComparison.OrdinalIgnoreCase))
+                CurrentNPC.currentPhase = parsed;
+            Debug.Log($"Phase for {npcName} set to {parsed}");
+        }
+        else
+        {
+            Debug.LogWarning("Unknown phase '" + phase + "'. Use start, game or end.");
+        }
+    }
+
+    // Yarn: <<set_phase "end">>  (the NPC you're talking to)
     [YarnCommand("set_phase")]
     public static void SetPhase(string phase)
     {
         if (Instance == null || Instance.CurrentNPC == null) return;
+        Instance.StorePhase(Instance.CurrentNPC.npcName, phase);
+    }
 
-        if (System.Enum.TryParse(phase, true, out NPC_Data.dialogPhase parsed))
-            Instance.CurrentNPC.currentPhase = parsed;
-        else
-            Debug.LogWarning("Unknown phase '" + phase + "'. Use start, game or end.");
+    // Yarn: <<set_phase_for "Grace" "end">>  (any NPC, by npcName)
+    [YarnCommand("set_phase_for")]
+    public static void SetPhaseFor(string npcName, string phase)
+    {
+        if (Instance == null) return;
+        Instance.StorePhase(npcName, phase);
     }
 }
