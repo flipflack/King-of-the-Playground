@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Diana_Bully_Start
   endingNode: Diana_Bully_End
   npcSprite: {fileID: -2940995535662453924, guid: ca316d2c5369d0540b2b450637951ad8, type: 3}
+  backgroundSprite: {fileID: -8700980328967972241, guid: 1d1b378873c915b4199dd5997cdc65d4, type: 3}
   currentPhase: 0

@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Grace_Victim_Start
   endingNode: Grace_Victim_End
   npcSprite: {fileID: 21300000, guid: e9792e1070b4c6946a9dfc3c9e7fa529, type: 3}
+  backgroundSprite: {fileID: 8860599639000135104, guid: cdd1388181e5ee44fb6930d7d51b2ffe, type: 3}
   currentPhase: 0

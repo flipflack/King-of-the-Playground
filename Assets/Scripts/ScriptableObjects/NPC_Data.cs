@@ -8,6 +8,10 @@ public class NPC_Data : ScriptableObject
     public string endingNode;
 
     public Sprite npcSprite;
+
+    [Tooltip("Blurred background shown behind this character in the Confrontation scene. Leave empty to keep the camera's plain color.")]
+    public Sprite backgroundSprite;
+
     public enum dialogPhase { start, game, end }
     public dialogPhase currentPhase;
 

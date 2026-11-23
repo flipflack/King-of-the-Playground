@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Evan_Victim_Start
   endingNode: Evan_Victim_End
   npcSprite: {fileID: 7676640484110150463, guid: f5a171020662be34b99357f9fe56c2d7, type: 3}
+  backgroundSprite: {fileID: 8712440520200568073, guid: bfdd9f99e623d524a93362abca2c0f86, type: 3}
   currentPhase: 0

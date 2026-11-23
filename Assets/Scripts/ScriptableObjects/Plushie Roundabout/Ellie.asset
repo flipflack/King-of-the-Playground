@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Ellie_Victim_Start
   endingNode: Ellie_Victim_End
   npcSprite: {fileID: 1401050812899596064, guid: 8c9baefee1526ce41a9d1c8538d2145e, type: 3}
+  backgroundSprite: {fileID: 0}
   currentPhase: 0

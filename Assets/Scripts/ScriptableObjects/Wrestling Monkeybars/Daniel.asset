@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Daniel_Bully_Start
   endingNode: Dnaiel_Bully_End
   npcSprite: {fileID: 175040981031741859, guid: 9694069b968933e4b8ee42435e088bca, type: 3}
+  backgroundSprite: {fileID: 8712440520200568073, guid: bfdd9f99e623d524a93362abca2c0f86, type: 3}
   currentPhase: 0

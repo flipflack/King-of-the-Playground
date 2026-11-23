@@ -67,6 +67,16 @@ public class GameManager : MonoBehaviour
             if (sr != null) sr.sprite = CurrentNPC.npcSprite;
         }
 
+        // per-character blurred background
+        DialogueBackground bg = FindAnyObjectByType<DialogueBackground>();
+        if (bg == null && CurrentNPC.backgroundSprite != null)
+        {
+            GameObject bgObject = new GameObject("DialogueBackground");
+            bgObject.AddComponent<SpriteRenderer>();
+            bg = bgObject.AddComponent<DialogueBackground>();
+        }
+        if (bg != null) bg.SetBackground(CurrentNPC.backgroundSprite);
+
         StartCoroutine(StartDialogueRoutine(runner));
     }
     private IEnumerator StartDialogueRoutine(DialogueRunner runner)
@@ -93,4 +103,4 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogWarning("Unknown phase '" + phase + "'. Use start, game or end.");
     }
-}
+}

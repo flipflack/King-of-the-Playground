@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Kevin_Bully_Start
   endingNode: Kevin_Bully_End
   npcSprite: {fileID: 1993710755605868245, guid: a0b2b17938f86b94ba237c0a256356dd, type: 3}
+  backgroundSprite: {fileID: -3301578399947588404, guid: d4c02a291417156418ab71b40f8cf802, type: 3}
   currentPhase: 0

@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: 
   endingNode: 
   npcSprite: {fileID: 0}
+  backgroundSprite: {fileID: 0}
   currentPhase: 0

@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Andy_Victim_Start
   endingNode: Andy_Victim_End
   npcSprite: {fileID: -7001423064021202384, guid: c8e73c17093f6cf4cb0c67af6b73ef31, type: 3}
+  backgroundSprite: {fileID: -8700980328967972241, guid: 1d1b378873c915b4199dd5997cdc65d4, type: 3}
   currentPhase: 0

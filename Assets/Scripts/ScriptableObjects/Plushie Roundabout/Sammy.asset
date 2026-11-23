@@ -16,4 +16,5 @@ MonoBehaviour:
   startingNode: Sammy_Bully_Start
   endingNode: Sammy_Bully_End
   npcSprite: {fileID: 697860302669651702, guid: f66443cc9f9f62e4fbb6c6e55914cdb1, type: 3}
+  backgroundSprite: {fileID: 0}
   currentPhase: 0
