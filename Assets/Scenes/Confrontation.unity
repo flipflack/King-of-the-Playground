@@ -12219,7 +12219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd50f871a60b4bbe88a71d308b2613f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 804828029}
+  canvasGroup: {fileID: 2958262987106226092}
   lineText: {fileID: 211647208}
   showCharacterNameInLine: 1
   characterNameText: {fileID: 1846253875}
@@ -12763,7 +12763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cd0d0412ea34813959f8ddaf02a6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 804828029}
+  canvasGroup: {fileID: 8020628925687364186}
   optionViewPrefab: {fileID: 2576261519635394347, guid: cf8f96046f6e2ca4ea10d801b64369f7, type: 3}
   showsLastLine: 0
   lastLineText: {fileID: 8020628925113013813}
@@ -12806,9 +12806,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 208}
-  m_SizeDelta: {x: -600, y: 0}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -20, y: 250}
+  m_SizeDelta: {x: -560, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &8020628925687364166
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6574668377393108228}
   m_Father: {fileID: 6984677182408098792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -100,17 +101,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5078344489792438467}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6984677182408098792}
+  m_Father: {fileID: 3241653132069343230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 260, y: 21}
+  m_SizeDelta: {x: 520, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8560417971095047034
 CanvasRenderer:
@@ -181,13 +182,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6574668377393108228}
   - {fileID: 3241653132069343230}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 788, y: 140}
+  m_AnchoredPosition: {x: 798, y: 108}
   m_SizeDelta: {x: 540, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2576261519635394348
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_margin: {x: 30, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2576261519635394347
@@ -335,10 +335,10 @@ MonoBehaviour:
   selectionImage: {fileID: 721144572235377823}
   normal:
     sprite: {fileID: 0}
-    colour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    colour: {r: 0.5411765, g: 0.47843137, b: 0.43137255, a: 1}
   selected:
     sprite: {fileID: 21300000, guid: 997a4571b48144fd7be9c547b769c11d, type: 3}
-    colour: {r: 1, g: 1, b: 1, a: 1}
+    colour: {r: 0.23921569, g: 0.16470589, b: 0.12156863, a: 1}
   disabled:
     sprite: {fileID: 0}
     colour: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
