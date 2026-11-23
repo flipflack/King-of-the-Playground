@@ -19,6 +19,10 @@ public class MinigameManager : MonoBehaviour
     //yarnspinner dialogue
     [SerializeField] private DialogueRunner dialogueRunner;
 
+    //dialogue UI that gets hidden while a minigame is playing
+    //(if left empty, it looks for an object named "DialogBoxStyle")
+    [SerializeField] private GameObject[] hideDuringMinigame;
+
     private MinigameSettings currentSettings;
     private Minigame currentMinigame;
 
@@ -77,6 +81,7 @@ public class MinigameManager : MonoBehaviour
         }
 
         isRunning = true;
+        SetDialogueUIVisible(false);
 
         currentMinigame = currentSettings.minigame;
 
@@ -128,7 +133,23 @@ public class MinigameManager : MonoBehaviour
         currentSettings.minigameCanvas.SetActive(false);
         minigameBGCanvas.SetActive(false);
         countdownText.gameObject.SetActive(false);
+        SetDialogueUIVisible(true);
         isRunning = false;
+    }
+
+    private void SetDialogueUIVisible(bool visible)
+    {
+        if (hideDuringMinigame == null || hideDuringMinigame.Length == 0)
+        {
+            GameObject box = GameObject.Find("DialogBoxStyle");
+            if (box != null) hideDuringMinigame = new GameObject[] { box };
+        }
+        if (hideDuringMinigame == null) return;
+
+        foreach (GameObject go in hideDuringMinigame)
+        {
+            if (go != null) go.SetActive(visible);
+        }
     }
 
     private IEnumerator StartCountdown()
