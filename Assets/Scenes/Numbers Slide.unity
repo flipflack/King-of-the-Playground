@@ -3958,7 +3958,7 @@ GameObject:
   - component: {fileID: 1927112532}
   - component: {fileID: 1927112531}
   m_Layer: 0
-  m_Name: Swings_BG
+  m_Name: Slides_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4013,7 +4013,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2886892731493957965, guid: 0fa56c23fa36f444794ea2ade45daa5e, type: 3}
+  m_Sprite: {fileID: 6933572942101744434, guid: 9d59a6f9154fd5a43a6f9e53edbfc6e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
