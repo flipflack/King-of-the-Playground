@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 38c6ed07a817b5f45b295e28ec22d084
+guid: a3d27847fefbd064789db5fc1bbcce29
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4378979135727711362
-    second: bg_slides_0_0
+      213: -6567408780728534707
+    second: bg_slides_6_0
   - first:
-      213: 416433821290551405
-    second: bg_slides_0_1
+      213: -7491951730969734686
+    second: bg_slides_6_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_slides_0_0
+      name: bg_slides_6_0
       rect:
         serializedVersion: 2
         x: 212
@@ -144,14 +144,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 284b5e7b25245cc30800000000000000
-      internalID: 4378979135727711362
+      spriteID: d49f4e17280ebd4a0800000000000000
+      internalID: -6567408780728534707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bg_slides_0_1
+      name: bg_slides_6_1
       rect:
         serializedVersion: 2
         x: 2205
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d685b76aa5877c500800000000000000
-      internalID: 416433821290551405
+      spriteID: 2e11d21489d370890800000000000000
+      internalID: -7491951730969734686
       vertices: []
       indices: 
       edges: []
@@ -176,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_slides_0_0: 4378979135727711362
-      bg_slides_0_1: 416433821290551405
+      bg_slides_6_0: -6567408780728534707
+      bg_slides_6_1: -7491951730969734686
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
