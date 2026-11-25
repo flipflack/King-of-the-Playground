@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         {
             SpriteRenderer sr = npcInScene.GetComponent<SpriteRenderer>(); // getting the NPC sprite
             if (sr != null) sr.sprite = CurrentNPC.npcSprite;
+            npcInScene.transform.position += (Vector3)CurrentNPC.confrontationOffset;
         }
 
         // per-character blurred background

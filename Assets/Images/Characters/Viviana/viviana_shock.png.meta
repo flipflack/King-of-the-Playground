@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 88478454e3abcef48be593dd2da141e8
+guid: ab8e062a3e426284a8f5e6842a1bfce4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3743999320148726238
-    second: vivian_talking_0
+      213: -4264125004132305896
+    second: vivian_shock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 350
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,10 +126,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vivian_talking_0
+      name: vivian_shock_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 18
         y: 20
         width: 542
         height: 882
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22e2b337474aa0cc0800000000000000
-      internalID: -3743999320148726238
+      spriteID: 81435daa6e8c2d4c0800000000000000
+      internalID: -4264125004132305896
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      vivian_talking_0: -3743999320148726238
+      vivian_shock_0: -4264125004132305896
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

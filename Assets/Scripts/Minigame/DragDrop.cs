@@ -66,7 +66,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         //Debug.Log("OnDrag");
         if (!dragAllowed)
             return;
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        float parentScale = rectTransform.parent != null ? rectTransform.parent.lossyScale.x / canvas.transform.lossyScale.x : 1f;
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor / parentScale;
     }
 
     public void OnEndDrag(PointerEventData eventData)

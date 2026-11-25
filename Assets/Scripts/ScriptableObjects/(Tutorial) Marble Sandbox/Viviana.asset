@@ -15,11 +15,18 @@ MonoBehaviour:
   npcName: Viviana
   startingNode: Viviana_Bully_Start
   endingNode: Viviana_Bully_End
-  npcSprite: {fileID: 21300000, guid: 9caafb15eee0e3447a047d42db52561a, type: 3}
+  npcSprite: {fileID: 8349810824885765125, guid: 9b7751b822d230442b62c36758eca575, type: 3}
   backgroundSprite: {fileID: 8860599639000135104, guid: cdd1388181e5ee44fb6930d7d51b2ffe, type: 3}
-  startingEmotion: angry
+  confrontationOffset: {x: -0.8, y: 0}
+  startingEmotion: neutral
   emotionSprites:
+  - emotion: neutral
+    sprite: {fileID: 8349810824885765125, guid: 9b7751b822d230442b62c36758eca575, type: 3}
+    talkingSprite: {fileID: -3743999320148726238, guid: 88478454e3abcef48be593dd2da141e8, type: 3}
   - emotion: angry
-    sprite: {fileID: 0}
+    sprite: {fileID: 3478220051760403129, guid: 3010f603778c75148960a67d8dd86043, type: 3}
+    talkingSprite: {fileID: 0}
+  - emotion: surprised
+    sprite: {fileID: -4264125004132305896, guid: ab8e062a3e426284a8f5e6842a1bfce4, type: 3}
     talkingSprite: {fileID: 0}
   currentPhase: 0

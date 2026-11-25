@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,11 @@ public class MinigameManager : MonoBehaviour
     //dialogue UI that gets hidden while a minigame is playing
     //(if left empty, it looks for an object named "DialogBoxStyle")
     [SerializeField] private GameObject[] hideDuringMinigame;
+    //false = dialog box hides while the minigame plays (true = stays on screen, not clickable)
+    [SerializeField] private bool keepDialogVisible = false;
+    //character sprites that get hidden while a minigame is playing
+    //(if left empty, it looks for objects named "Lola" and "NPC")
+    [SerializeField] private SpriteRenderer[] hideSpritesDuringMinigame;
 
     private MinigameSettings currentSettings;
     private Minigame currentMinigame;
@@ -144,11 +150,34 @@ public class MinigameManager : MonoBehaviour
             GameObject box = GameObject.Find("DialogBoxStyle");
             if (box != null) hideDuringMinigame = new GameObject[] { box };
         }
+        if (hideSpritesDuringMinigame == null || hideSpritesDuringMinigame.Length == 0)
+        {
+            List<SpriteRenderer> found = new List<SpriteRenderer>();
+            foreach (string n in new[] { "Lola", "NPC" })
+            {
+                GameObject obj = GameObject.Find(n);
+                if (obj != null && obj.GetComponent<SpriteRenderer>() != null) found.Add(obj.GetComponent<SpriteRenderer>());
+            }
+            hideSpritesDuringMinigame = found.ToArray();
+        }
+        foreach (SpriteRenderer sr in hideSpritesDuringMinigame)
+        {
+            if (sr != null) sr.enabled = visible;
+        }
+
         if (hideDuringMinigame == null) return;
 
         foreach (GameObject go in hideDuringMinigame)
         {
-            if (go != null) go.SetActive(visible);
+            if (go == null) continue;
+            if (keepDialogVisible)
+            {
+                CanvasGroup cg = go.GetComponent<CanvasGroup>();
+                if (cg == null) cg = go.AddComponent<CanvasGroup>();
+                cg.blocksRaycasts = visible;
+                cg.interactable = visible;
+            }
+            else go.SetActive(visible);
         }
     }
 

@@ -13,6 +13,9 @@ public class NPC_Data : ScriptableObject
     [Tooltip("Blurred background shown behind this character in the Confrontation scene. Leave empty to keep the camera's plain color.")]
     public Sprite backgroundSprite;
 
+    [Tooltip("Nudges this character's position in the Confrontation scene (x = left/right, y = up/down).")]
+    public Vector2 confrontationOffset;
+
     [Header("Faces (used with #emotion:name in Yarn)")]
     [Tooltip("The face this character starts each conversation with. Leave empty to use NPC Sprite.")]
     public string startingEmotion;
