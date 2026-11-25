@@ -17,4 +17,15 @@ MonoBehaviour:
   endingNode: Ellie_Victim_End
   npcSprite: {fileID: 21300000, guid: 92dc55a35ae8f174f9c1fc4c890500ba, type: 3}
   backgroundSprite: {fileID: 0}
+  startingEmotion: laughing
+  emotionSprites:
+  - emotion: surprised
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: laughing
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: confused
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

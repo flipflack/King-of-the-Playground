@@ -17,4 +17,18 @@ MonoBehaviour:
   endingNode: Sammy_Bully_End
   npcSprite: {fileID: 21300000, guid: 68e9996da758a594ba9c33ae7b78cdf1, type: 3}
   backgroundSprite: {fileID: 0}
+  startingEmotion: confused
+  emotionSprites:
+  - emotion: confused
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: guilty
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: sad
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: happy
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

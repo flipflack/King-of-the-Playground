@@ -17,4 +17,15 @@ MonoBehaviour:
   endingNode: Daisy_Victim_End
   npcSprite: {fileID: 21300000, guid: 316d25416a2a07445a8fc79ec49bac15, type: 3}
   backgroundSprite: {fileID: -3301578399947588404, guid: d4c02a291417156418ab71b40f8cf802, type: 3}
+  startingEmotion: smiling
+  emotionSprites:
+  - emotion: smiling
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: excited
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: annoyed
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

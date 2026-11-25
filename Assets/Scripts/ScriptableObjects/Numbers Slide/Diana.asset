@@ -17,4 +17,18 @@ MonoBehaviour:
   endingNode: Diana_Bully_End
   npcSprite: {fileID: 21300000, guid: 8b374504fe5c970458a4566cd3bd950b, type: 3}
   backgroundSprite: {fileID: -8700980328967972241, guid: 1d1b378873c915b4199dd5997cdc65d4, type: 3}
+  startingEmotion: nerd
+  emotionSprites:
+  - emotion: nerd
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: confused
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: gasp
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: frustrated
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

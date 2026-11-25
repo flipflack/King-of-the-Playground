@@ -17,4 +17,15 @@ MonoBehaviour:
   endingNode: Grace_Victim_End
   npcSprite: {fileID: 21300000, guid: e9792e1070b4c6946a9dfc3c9e7fa529, type: 3}
   backgroundSprite: {fileID: 8860599639000135104, guid: cdd1388181e5ee44fb6930d7d51b2ffe, type: 3}
+  startingEmotion: sad
+  emotionSprites:
+  - emotion: sad
+    sprite: {fileID: 21300000, guid: e9792e1070b4c6946a9dfc3c9e7fa529, type: 3}
+    talkingSprite: {fileID: 21300000, guid: d3c94f32623c56c4db1d5d5605d5965b, type: 3}
+  - emotion: neutral
+    sprite: {fileID: 21300000, guid: 1514f4e7ef5c54d45aa95911381e54c0, type: 3}
+    talkingSprite: {fileID: 0}
+  - emotion: surprised
+    sprite: {fileID: 21300000, guid: 89c1de2db9737c44991d1f3777dbf6b4, type: 3}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

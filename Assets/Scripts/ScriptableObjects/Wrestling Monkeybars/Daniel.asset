@@ -17,4 +17,15 @@ MonoBehaviour:
   endingNode: Daniel_Bully_End
   npcSprite: {fileID: 21300000, guid: 2f4c51e503eb6b24d9d30842095cfd30, type: 3}
   backgroundSprite: {fileID: 8712440520200568073, guid: bfdd9f99e623d524a93362abca2c0f86, type: 3}
+  startingEmotion: smug
+  emotionSprites:
+  - emotion: egotistical
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: smug
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: shocked
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

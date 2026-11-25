@@ -17,4 +17,15 @@ MonoBehaviour:
   endingNode: 
   npcSprite: {fileID: 0}
   backgroundSprite: {fileID: 0}
+  startingEmotion: egotistical
+  emotionSprites:
+  - emotion: neutral
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: egotistical
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
+  - emotion: confused
+    sprite: {fileID: 0}
+    talkingSprite: {fileID: 0}
   currentPhase: 0

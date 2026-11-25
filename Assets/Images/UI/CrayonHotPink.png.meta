@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 695f54a434812564589b2100eeb8e742
+guid: f9e41e2428463974dad98085ec4e4849
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6734535964348205699
-    second: Dialog Box_0
+      213: 8559096697836765974
+    second: CrayonHotPink_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dialog Box_0
+      name: CrayonHotPink_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1900
-        height: 600
+        y: 22
+        width: 1757
+        height: 443
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38a411a47c0e57d50800000000000000
-      internalID: 6734535964348205699
+      spriteID: 61387c0491508c670800000000000000
+      internalID: 8559096697836765974
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dialog Box_0: 6734535964348205699
+      CrayonHotPink_0: 8559096697836765974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
